@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riddle</title>
+</head>
+<body>
+
+    {{ riddle }}
+
+    <form action="/riddle" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="ques_no" name="ques_no" value="{{ ques_no }}">
+        <input id="answer" type="text" name="answer" maxlength="100" required placeholder="Enter your answer">
+        <input type="submit" value="Submit">
+    </form>
+
+
+</body>
+</html>
