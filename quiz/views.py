@@ -7,13 +7,17 @@ from django.contrib.auth.models import User
 
 from django.utils import timezone
 
+def landing(request):
+	return render(request, 'home.html')
+
 
 def index(request):
 	current_user = request.user
 
 	# user not logged in
 	if current_user.is_anonymous:
-		return render(request, 'index.html')
+		print("Hello")
+		return redirect('/accounts/login')
 
 	try:
 		user_data = UserData.objects.get(user = current_user)
@@ -59,7 +63,9 @@ def riddle(request):
 					time_taken = hist.end_time - hist.start_time
 					print(time_taken.total_seconds())
 
+					# score algo
 					score = 5
+
 					user_data = UserData.objects.get(user = current_user)
 					user_data.score += score
 					user_data.save()

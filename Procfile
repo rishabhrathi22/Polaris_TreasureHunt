@@ -1,0 +1,1 @@
+web: gunicorn TreasureHunt.wsgi --log-file -

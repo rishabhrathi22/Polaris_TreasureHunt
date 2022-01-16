@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@import "./banner", "./about", "./countDown", "./timeline", "./prizes", "./socials", "./faq";
+
+@font-face {
+    font-family: marvel;
+    src: url("./../fonts/AvengeroRegular-zvgl.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    background-color: black;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+#mobile-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: #262626;
+    color: #fff;
+    z-index: 100;
+    overflow: hidden;
+
+    p {
+        text-align: center;
+    }
+}
+
+#logo {
+    position: fixed;
+    top: -6px;
+    left: 6px;
+    opacity: .8;
+    padding: 5px;
+    z-index: 500;
+
+    a {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    img {
+        width: 44px;
+        margin-right: 8px;
+    }
+}
+
+.spidey {
+    position: fixed;
+    right: -40px;
+    bottom: -8px;
+    z-index: 100;
+    transform-origin: 50% 50%;
+
+    img {
+        width: 200px;
+    }
+
+    &:hover {
+        animation: rot 1.2s linear;
+    }
+}
+
+@keyframes rot {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.reg-btn {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 30px 0;
+    transition: 200ms;
+
+    img {
+        &:hover {
+            transform: scale(1.1);
+            cursor: url('./../images/CUR2.png'), pointer;
+
+        }
+
+        &:active {
+            transform: scale(.9);
+            cursor: url('./../images/CUR1.png'), pointer;
+
+        }
+    }
+}
+
+.footer p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+}
+
+#loader {
+    display: block;
+    background-color: #fff;
+    background: url("./../images/loader.gif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    img {
+        width: 760px;
+    }
+}
+
+#faq-img {
+    position: absolute;
+    width: 240px;
+    transform: rotate(16deg) translateY(-22px);
+    right: 364px;
+
+}
+
+
+@media (max-width: 1000px) {
+    body {
+        overflow: hidden;
+    }
+
+    #mobile-screen {
+        display: flex;
+    }
+
+    #loader {
+        display: none;
+    }
+}

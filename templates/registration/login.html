@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,4 +41,69 @@
 
 </body>
 </html>
+ -->
 
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Nunito:wght@300&family=Poppins:ital,wght@0,300;0,500;1,400&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <video id="background-video" autoplay loop muted>
+        <source src="{% static 'videos/background.mp4' %}" type="video/mp4">
+    </video>
+    <div class="login-box">
+        <h2 class="login-style">Login</h2>
+        <div style="text-align: center;">
+            <!-- Change image to Fav Icon -->
+            <img src="https://img.search.brave.com/sHNaeqNFF9Ku9Xn1k0xB-j6ypP_1AfyTU1FtpTecWic/fit/635/629/ce/1/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2M3Lzc4/LzljL2M3Nzg5Y2E2/YzY0MjBjZjJiOWRm/ZWIxMTM3ZmJkNjM0/LmpwZw"
+                width="50px" height="auto" style="border-radius: 7px; margin-top: 10px; margin-bottom: 35px;" alt="">
+        </div>
+
+        <form method="post" action="{% url 'login' %}" id="login_form">
+            {% csrf_token %}
+            <div class="user-box">
+                {{ form.username }}
+                <label>Username</label>
+            </div>
+            <div class="user-box">
+                {{ form.password }}
+                <label>Password</label>
+            </div>
+            <div style="text-align: center;">
+                <a href="#" onclick="document.getElementById('login_form').submit();">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Submit
+                </a>
+            </div>
+            <input type="hidden" name="next" value="/home" />
+        </form>
+
+        {% if form.errors %}
+        <p style="color: red; text-align: center">Your username and password didn't match. Please try again.</p>
+        {% endif %}
+
+    </div>
+</body>
+
+</html>
