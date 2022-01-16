@@ -60,12 +60,15 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Nunito:wght@300&family=Poppins:ital,wght@0,300;0,500;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Nunito:wght@300&family=Poppins:ital,wght@0,300;0,500;1,400&display=swap"
+        rel="stylesheet">
 
 </head>
 
 <body>
-    <video id="background-video" autoplay loop muted>
+    <img src="{% static 'images\login background.png' %}" alt="" style="width: -webkit-fill-available;height: 100vh;position: fixed;z-index: -1;">
+    <video id="background-video" style="width: -webkit-fill-available;" autoplay loop muted>
         <source src="{% static 'videos/background.mp4' %}" type="video/mp4">
     </video>
 
