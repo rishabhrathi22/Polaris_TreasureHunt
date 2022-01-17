@@ -5,4 +5,7 @@ urlpatterns = [
     path('', views.landing),
     path('home', views.index),
     path('riddle', views.riddle),
+    path('hint', views.hint),
+
+    
 ]
