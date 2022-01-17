@@ -8,6 +8,14 @@
 </head>
 <body>
 
+    {% if user.is_authenticated %}
+    {% if hints_taken >= 3%}
+    <h3>Score : {{score}} Hint Taken : All Hints used </h3>
+    {% else %}
+    <h3>Score : {{score}} Hint Taken : {{hints_taken}}</h3>
+{% endif%}
+    {% endif %}
+
     {{ riddle }}
 
     <form action="/riddle" method="post">
@@ -16,6 +24,11 @@
         <input id="answer" type="text" name="answer" maxlength="100" required placeholder="Enter your answer">
         <input type="submit" value="Submit">
     </form>
+    {% if hints_taken >= 3%}
+    <a style="cursor: not-allowed;">Hint</a>
+    {% else %}
+    <a href="/hint">Hint</a>
+{% endif%}
 
 
 </body>
