@@ -1,0 +1,25 @@
+{% extends "riddles/base.html" %}
+
+{% block content %}
+<div class="main">
+	<span class="blurFilter"></span>
+	<div class="riddle">
+		<div class="riddleQuestion">
+			<h1>Question 3</h1>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente fuga cum delectus deserunt tempora
+				consequatur necessitatibus optio accusamus nobis dolor magni commodi obcaecati adipisci, ducimus facere
+				iste blanditiis aut doloremque.</p>
+		</div>
+
+		<div class="riddleAnswer">
+			<form action="/solve" method="post">
+				{% csrf_token %}
+				<input type="hidden" id="ques_no" name="ques_no" value="{{ ques_no }}">
+				<input id="answer" type="text" name="answer" maxlength="100" required placeholder="Enter your answer">
+				<input type="submit" value="Submit">
+				<span class="hint"><i class="fas fa-info-circle"></i>Take Hint</span>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock content %}

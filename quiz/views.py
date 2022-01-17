@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 from .models import *
 from .forms import SubmitRiddleForm
@@ -11,32 +11,34 @@ def landing(request):
 	return render(request, 'home.html')
 
 
-def index(request):
+def home(request):
 	current_user = request.user
 
 	# user not logged in
 	if current_user.is_anonymous:
-		print("Hello")
 		return redirect('/accounts/login')
 
 	try:
 		user_data = UserData.objects.get(user = current_user)
-		context = {
-			"score": user_data.score,
-			"hints_taken": user_data.hints_taken
-		}
-	except:
-		context = {}
+	except Exception as e:
+		print(e)
+		user_data = UserData.objects.create(user = current_user)
+		user_data.save()
+
+	context = {
+		"score": user_data.score,
+		"hints_taken": user_data.hints_taken
+	}
 
 	return render(request, 'index.html', context = context)
 
 
-def riddle(request):
+def solve(request):
 	current_user = request.user
 
 	# user not logged in
 	if current_user.is_anonymous:
-		return render(request, 'index.html')
+		return redirect('/accounts/login')
 
 	# if this is a POST request we need to process the form data
 	if request.method == 'POST':
@@ -61,13 +63,15 @@ def riddle(request):
 
 					# calculate score according to time taken
 					time_taken = hist.end_time - hist.start_time
-					print(time_taken.total_seconds())
+					time_taken_mins = time_taken.total_seconds()//60
 
 					# score algo
-					score = 5
+					max_points = riddle.correct_points
+					curr_score = max(max_points//2, max_points - time_taken_mins*10)
 
 					user_data = UserData.objects.get(user = current_user)
-					user_data.score += score
+					user_data.score += curr_score
+					user_data.ques_solved += 1
 					user_data.save()
 
 					return render(request, 'correct.html')
@@ -79,14 +83,19 @@ def riddle(request):
 				return HttpResponse("Riddle not found")
 
 			# redirect to a new URL:
-			return redirect('/riddle')
+			return redirect('/solve')
+
+		else:
+			return HttpResponse("Incorrect form data")
 
 	# if a GET (or any other method) we'll create a blank form
 	else:
 		# find the last solved question
 		try:
-			history = History.objects.filter(user = current_user, end_time__isnull = False)
-			last_ques = history.last().ques.ques_no
+			user_data = UserData.objects.get(user = current_user)
+			last_ques = user_data.ques_solved
+			# history = History.objects.filter(user = current_user, end_time__isnull = False)
+			# last_ques = history.last().ques.ques_no
 		except Exception as e:
 			print(e)
 			last_ques = 0
@@ -105,13 +114,39 @@ def riddle(request):
 			hist.save()
 		except Exception as e:
 			print(e)
+			hist = History.objects.get(user = current_user, ques = curr_riddle)
 
-		form = SubmitRiddleForm()
+		context = {
+			'ques_no': curr_riddle.ques_no,
+			'team_name': user_data.user,
+			'score': user_data.score,
+			'hints_taken': user_data.hints_taken,
+			'start_time': hist.start_time.timestamp()*1000
+		}
 
-	context = {
-		'form': form,
-		'ques_no': curr_riddle.ques_no,
-		'riddle': curr_riddle.riddle
-	}
+		return render(request, 'riddles/riddle' + str(curr_ques) + '.html', context)
 
-	return render(request, 'riddle.html', context)
+
+def leaderboard(request):
+	current_user = request.user
+
+	# user not logged in
+	if current_user.is_anonymous:
+		return redirect('/accounts/login')
+
+	try:
+		all_users = UserData.objects.all()
+		data = []
+
+		for user in all_users:
+			data.append({
+				"user": user.user.username,
+				"ques_solved": user.ques_solved,
+				"score": user.score,
+				"hints_taken": user.hints_taken,
+			})
+
+		return JsonResponse(data, safe = False)
+	except Exception as e:
+		print(e)
+		return HttpResponse("User not found")
