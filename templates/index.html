@@ -1,25 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Treasure Hunt</title>
 </head>
+
 <body>
 
     {% if user.is_authenticated %}
-        <li>User: {{ user.get_username }}</li>
-        <li>Score: {{ score }}</li>
-        <li>Hints Taken: {{ hints_taken }}</li>
-        <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
-        <br/>
+    <li>User: {{ user.get_username }}</li>
+    <li>Score: {{ score }}</li>
+    <li>Hints Taken: {{ hints_taken }}</li>
+    <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+    <br />
 
-        <a href="/riddle">Start</a>
+    <a href="/riddle">Start</a>
+
+    <h1>Leaderbord</h1>
+    <table border="1">
+        <tr>
+            <td>Rank</td>
+            <td>User</td>
+            <td>Score</td>
+            <td>Hint Taken</td>
+        </tr>
+        {% for user in sortedlist %}
+        <tr>
+            <td>{{user.index}}</td>
+        <td>{{ user.user }}</td>
+        <td>{{ user.score }}</td>
+        <td>{{ user.hints_taken }}</td>
+        </tr>
+
+        {% endfor %}
+    </table>
 
     {% else %}
-        <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+    <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
     {% endif %}
 
 </body>
+
 </html>
