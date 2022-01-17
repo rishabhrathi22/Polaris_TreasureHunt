@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 
 from .models import *
 from .forms import SubmitRiddleForm
@@ -20,15 +21,30 @@ def index(request):
 		return redirect('/accounts/login')
 
 	try:
+		#Sorting Database
+		sorted_list = UserData.objects.order_by('-score')
+
 		user_data = UserData.objects.get(user = current_user)
 		context = {
 			"score": user_data.score,
-			"hints_taken": user_data.hints_taken
-		}
+			"hints_taken": user_data.hints_taken,
+			"sortedlist": sorted_list}
+	
 	except:
 		context = {}
 
 	return render(request, 'index.html', context = context)
+
+def hint(request):
+	current_user = request.user
+	user_data = UserData.objects.get(user = current_user)
+	user_data.hints_taken +=1
+	if user_data.hints_taken >= 3:
+		user_data.hints_taken = 3
+	user_data.save()
+
+	return HttpResponseRedirect("/riddle")
+
 
 
 def riddle(request):
@@ -58,17 +74,24 @@ def riddle(request):
 					hist = History.objects.get(user = current_user, ques = riddle)
 					hist.end_time = timezone.now()
 					hist.save()
-
+					
 					# calculate score according to time taken
 					time_taken = hist.end_time - hist.start_time
 					print(time_taken.total_seconds())
 
 					# score algo
 					score = 5
+					try:
+						user_data = UserData.objects.get(user = current_user)
+					except:
+						user_data = UserData.objects.create(user = current_user)
 
-					user_data = UserData.objects.get(user = current_user)
 					user_data.score += score
 					user_data.save()
+
+					
+
+
 
 					return render(request, 'correct.html')
 				else:
@@ -108,7 +131,10 @@ def riddle(request):
 
 		form = SubmitRiddleForm()
 
+	user_data = UserData.objects.get(user = current_user)
 	context = {
+		"score": user_data.score,
+		"hints_taken": user_data.hints_taken,
 		'form': form,
 		'ques_no': curr_riddle.ques_no,
 		'riddle': curr_riddle.riddle
