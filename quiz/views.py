@@ -39,6 +39,7 @@ def hint(request):
 	current_user = request.user
 	user_data = UserData.objects.get(user = current_user)
 	user_data.hints_taken +=1
+	user_data.score -= 2
 	if user_data.hints_taken >= 3:
 		user_data.hints_taken = 3
 	user_data.save()
