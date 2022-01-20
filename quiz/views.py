@@ -127,6 +127,10 @@ def solve(request):
 		return render(request, 'riddles/riddle' + str(curr_ques) + '.html', context)
 
 
+def rules(request):
+	return render(request, 'rules.html')
+
+
 def leaderboard(request):
 	current_user = request.user
 
@@ -137,16 +141,36 @@ def leaderboard(request):
 	try:
 		all_users = UserData.objects.all()
 		data = []
+		curr_user_data = {}
+		rank = 1
 
 		for user in all_users:
 			data.append({
+				"rank": rank,
 				"user": user.user.username,
 				"ques_solved": user.ques_solved,
 				"score": user.score,
 				"hints_taken": user.hints_taken,
 			})
 
-		return JsonResponse(data, safe = False)
+			if(user.user == current_user):
+				curr_user_data = {
+					"rank": rank,
+					"user": user.user.username,
+					"ques_solved": user.ques_solved,
+					"score": user.score,
+					"hints_taken": user.hints_taken,
+				}
+
+			rank += 1
+
 	except Exception as e:
 		print(e)
 		return HttpResponse("User not found")
+
+	context = {
+		"all_users": data,
+		"curr_user": curr_user_data
+	}
+
+	return render(request, 'leaderboard.html', context = context)

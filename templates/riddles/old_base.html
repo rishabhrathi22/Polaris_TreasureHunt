@@ -1,0 +1,179 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Hunt</title>
+    <link rel="stylesheet" href="{% static 'css/riddle.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <style>
+        #clockdiv{
+            font-family: sans-serif;
+            color: #fff;
+            display: inline-block;
+            font-weight: 100;
+            text-align: center;
+            font-size: 15px;
+            margin-top: 5%;
+        }
+
+        #clockdiv > div{
+            padding: 5px;
+            border-radius: 3px;
+            background: #00BF96;
+            display: inline-block;
+        }
+
+        #clockdiv div > span{
+            padding: 15px;
+            border-radius: 3px;
+            background: #00816A;
+            display: inline-block;
+        }
+
+        .smalltext{
+            padding-top: 5px;
+            font-size: 15px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav>
+        <div class="flex">
+            <div class="title">
+                <h2>Treasure Hunt |</h2>
+            </div>
+            <div class="teamDetails">
+                <div class="teamAvatar">
+                    <img src="https://www.w3schools.com/howto/img_avatar.png" alt="">
+                </div>
+                <div class="teamName">
+                    <span>{{ team_name }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="options">
+            <button class="btn " id="myBtn">
+                Rules
+            </button>
+            <button class="btn " id="myBtn2">
+                Leaderboard
+            </button>
+
+            <div id="clockdiv">
+                <div>
+                    <span class="minutes"></span>
+                    <div class="smalltext">Minutes</div>
+                </div>
+                <div>
+                    <span class="seconds"></span>
+                    <div class="smalltext">Seconds</div>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+
+    {% block content %}{% endblock content %}
+
+    <div class="footer">
+        <div class="gameDetails">
+            <button class="next btn" onclick="window.location='/solve';">Next <i class="fas fa-arrow-right"></i></button>
+            <div class="points btn "> <span>Points: {{ score }} </span></div>
+            <div class="hints btn"><span>Hints Used: {{ hints_taken }}</span></div>
+        </div>
+    </div>
+
+    <div id="leaderboardModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Leaderboard</h2>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Ques Solved</th>
+                            <th>Score</th>
+                            <th>Hints Taken</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardTable"></tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <h3>Modal Footer</h3>
+            </div>
+        </div>
+    </div>
+
+    <div id="rulesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Rules of Hunt</h2>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the Modal Body</p>
+                <p>Some other text...</p>
+            </div>
+            <div class="modal-footer">
+                <h3>Modal Footer</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="{% static 'js/app.js' %}"></script>
+
+    <script>
+        function getTimeElapsed() {
+            const start_time = new Date({{ start_time }});
+            const current_time = new Date();
+
+            const total = Date.parse(current_time) - Date.parse(start_time);
+            const seconds = Math.floor((total / 1000) % 60);
+            const minutes = Math.floor((total / 1000 / 60) % 60);
+
+            return {
+                total,
+                minutes,
+                seconds
+            };
+        }
+
+        function initializeClock(id) {
+            const clock = document.getElementById(id);
+            const minutesSpan = clock.querySelector('.minutes');
+            const secondsSpan = clock.querySelector('.seconds');
+
+            function updateClock() {
+                const t = getTimeElapsed();
+                minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+                secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+            }
+
+            updateClock();
+            const timeinterval = setInterval(updateClock, 1000);
+        }
+
+        function getLeaderboard() {
+
+        }
+
+        initializeClock('clockdiv');
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="{% static 'css/leaderboard.css' %}">
+</head>
+
+<body>
+
+    <div class="l-wrapper">
+        <div class="c-header">
+            <span>Marvellous Treasure Hunt</span>
+        </div>
+        <div class="l-grid">
+            <div class="l-grid__item l-grid__item--sticky">
+                <div class="c-card u-bg--light-gradient u-text--dark">
+                    <div class="c-card__body">
+                        <div class="u-display--flex u-justify--space-between">
+                            <div class="u-text--left">
+                                <div class="u-text--small">My Rank</div>
+                                <h2>{{ curr_user.rank }}</h2>
+                            </div>
+                            <div class="u-text--right">
+                                <div class="u-text--small">My Points</div>
+                                <h2>{{ curr_user.score }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-card">
+                    <div class="c-card__body">
+                        <div class="u-text--center" id="winner">
+                            <img class="c-avatar c-avatar--lg" src="{% static 'images/avatar.jpg' %}" />
+                            <h3 class="u-mt--16">{{ user }}</h3>
+                            <span class="u-text--teal u-text--small">Rounds Cleared - {{ curr_user.ques_solved }}</span><br/>
+                            <span class="u-text--teal u-text--small">Hints Taken - {{ curr_user.hints_taken }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="l-grid__item">
+                <div class="c-card">
+                    <div class="c-card__body">
+                        <ul class="c-list" id="list">
+                            <li class="c-list__item">
+                                <div class="c-list__grid">
+                                    <div class="u-text--left u-text--small u-text--medium">Rank</div>
+                                    <div class="u-text--left u-text--small u-text--medium">Team Name</div>
+                                    <div class="u-text--right u-text--small u-text--medium">Rounds</div>
+                                    <div class="u-text--right u-text--small u-text--medium">Score</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/leaderboard.js' %}"></script>
+    <script>
+        loadLeaderboard({{ all_users|safe }});
+    </script>
+
+</body>
+
+</html>

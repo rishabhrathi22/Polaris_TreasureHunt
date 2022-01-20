@@ -2,22 +2,41 @@
 
 {% block content %}
 <div class="main">
-	<span class="blurFilter"></span>
 	<div class="riddle">
 		<div class="riddleQuestion">
 			<h1>Question 2</h1>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente fuga cum delectus deserunt tempora
-				consequatur necessitatibus optio accusamus nobis dolor magni commodi obcaecati adipisci, ducimus facere
-				iste blanditiis aut doloremque.</p>
+				consequatur necessitatibus optio accusamus nobis dolor magni commodi obcaecati adipisci, ducimus
+				facere iste blanditiis aut doloremque.
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum facilis est velit, ullam
+				accusantium ab asperiores tempore veniam id voluptates corporis rerum nam. Dolore praesentium ex
+				vero obcaecati, fugiat delectus sed voluptatem
+				quod doloremque neque expedita facilis ea, recusandae exercitationem nam? Non aut eum est? Facere
+				dolores mollitia ratione ab? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi ut
+				provident porro sed minima hic quis
+				nam, aliquid amet. Autem ex minima consequuntur ducimus ipsam tempora! Harum culpa, deleniti
+				perspiciatis quaerat beatae minus cum odio, a perferendis dolorum debitis eaque? Sunt velit
+				similique veniam quidem quis modi voluptatibus,
+				incidunt nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur veritatis autem
+				ut, quidem neque, sed provident ratione inventore ea, totam modi hic voluptas at? Quia odio iusto,
+				saepe pariatur nemo accusamus fuga,
+				veritatis, adipisci nihil quidem incidunt optio corporis voluptatibus ipsum ullam ipsam dicta
+				temporibus aliquam dolores velit sit qui repellendus ipsa in? Amet veritatis at saepe, et fugit quia
+				minima provident dolorum placeat deserunt
+				quidem iste molestias repellat suscipit voluptate quis illum eligendi voluptatum fugiat totam libero
+				adipisci repudiandae. Nihil, neque aliquam. Quaerat, est repellendus officiis eligendi quod officia,
+				iste reprehenderit iusto autem
+				molestiae, exercitationem sint architecto ullam deserunt.</p>
 		</div>
 
-		<div class="riddleAnswer">
-			<form action="/solve" method="post">
+		<div class="l-form form-style">
+			<form action="/solve" method="post" class="form">
 				{% csrf_token %}
 				<input type="hidden" id="ques_no" name="ques_no" value="{{ ques_no }}">
-				<input id="answer" type="text" name="answer" maxlength="100" required placeholder="Enter your answer">
-				<input type="submit" value="Submit">
-				<span class="hint"><i class="fas fa-info-circle"></i>Take Hint</span>
+				<div class="form__div">
+					<input class="form__input" id="answer" type="text" name="answer" maxlength="100" required
+						placeholder="Enter your answer">
+				</div>
 			</form>
 		</div>
 	</div>
