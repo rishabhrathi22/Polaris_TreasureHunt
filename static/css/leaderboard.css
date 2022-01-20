@@ -98,7 +98,7 @@ select {
 
 @font-face {
   font-family: avengers;
-  src: url("avenger.ttf") format("truetype");
+  src: url("/static/fonts/avenger.ttf") format("truetype");
 }
 
 body::-webkit-scrollbar {
