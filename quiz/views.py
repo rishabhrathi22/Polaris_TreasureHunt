@@ -139,7 +139,9 @@ def leaderboard(request):
 		return redirect('/accounts/login')
 
 	try:
-		all_users = UserData.objects.all()
+		# all_users = UserData.objects.all()
+		all_users = UserData.objects.order_by('-ques_solved', '-score', 'hints_taken')
+
 		data = []
 		curr_user_data = {}
 		rank = 1
