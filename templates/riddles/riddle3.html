@@ -1,32 +1,14 @@
 {% extends "riddles/base.html" %}
 
 {% block content %}
+{% load static %}
 <div class="main">
 	<div class="riddle">
 		<div class="riddleQuestion">
-			<h1>Question 3</h1>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente fuga cum delectus deserunt tempora
-				consequatur necessitatibus optio accusamus nobis dolor magni commodi obcaecati adipisci, ducimus
-				facere iste blanditiis aut doloremque.
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum facilis est velit, ullam
-				accusantium ab asperiores tempore veniam id voluptates corporis rerum nam. Dolore praesentium ex
-				vero obcaecati, fugiat delectus sed voluptatem
-				quod doloremque neque expedita facilis ea, recusandae exercitationem nam? Non aut eum est? Facere
-				dolores mollitia ratione ab? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi ut
-				provident porro sed minima hic quis
-				nam, aliquid amet. Autem ex minima consequuntur ducimus ipsam tempora! Harum culpa, deleniti
-				perspiciatis quaerat beatae minus cum odio, a perferendis dolorum debitis eaque? Sunt velit
-				similique veniam quidem quis modi voluptatibus,
-				incidunt nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur veritatis autem
-				ut, quidem neque, sed provident ratione inventore ea, totam modi hic voluptas at? Quia odio iusto,
-				saepe pariatur nemo accusamus fuga,
-				veritatis, adipisci nihil quidem incidunt optio corporis voluptatibus ipsum ullam ipsam dicta
-				temporibus aliquam dolores velit sit qui repellendus ipsa in? Amet veritatis at saepe, et fugit quia
-				minima provident dolorum placeat deserunt
-				quidem iste molestias repellat suscipit voluptate quis illum eligendi voluptatum fugiat totam libero
-				adipisci repudiandae. Nihil, neque aliquam. Quaerat, est repellendus officiis eligendi quod officia,
-				iste reprehenderit iusto autem
-				molestiae, exercitationem sint architecto ullam deserunt.</p>
+			<div class="crossword">
+				<img src="{% static 'images/CrossWord.png' %}" alt="">
+			</div>
+
 		</div>
 
 		<div class="l-form form-style">
@@ -39,6 +21,20 @@
 				</div>
 			</form>
 		</div>
+	</div>
+	<div class="round3-clue">
+		<p>1. I am never stopping I hang out with numbers every day and nothing ever gets in my way. <br> What am I?
+		</p><br>
+		<p>2. I cannot be felt, seen, or touched yet I can be found in everybody. My existence is always <br>
+			philosophical.</p><br>
+		<p>3. [ M L3 T-2 ] / [ L T ]
+		</p><br>
+		<p>4. where there is no appreciable air to breathe or to scatter light. I contain the darkest whole.
+		</p><br>
+		<p>5. I can be seen and used by every Mathematician but can never be reached.
+
+		</p> <br>
+		<p>6. technological hints are to be used.</p>
 	</div>
 </div>
 {% endblock content %}

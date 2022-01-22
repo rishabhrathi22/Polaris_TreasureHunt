@@ -158,12 +158,12 @@ nav {
   flex-direction: column;
 }
 
-.riddleQuestion {
+/* .riddleQuestion {
   height: 50vh;
   align-self: baseline;
   margin-top: 20px;
   overflow: scroll;
-}
+} */
 
 .riddleQuestion1>p {
   padding: 15px;
@@ -380,10 +380,10 @@ small {
 /*Input focus move up label*/
 
 .form__input:focus+.form__label {
-  top: -0.5rem;
-  left: 0.8rem;
+  top: -.5rem;
+  left: .8rem;
   color: white;
-  font-size: 0.75rem;
+  font-size: .75rem;
   font-weight: 500;
   z-index: 10;
   font-family: myFirstFont;
@@ -493,4 +493,19 @@ small {
 
 .img-round1 {
   right: 20%;
+}
+
+.crossword img {
+  height: 18rem;
+  margin-top: 5rem;
+}
+
+.round3-clue {
+  position: absolute;
+  top: 35%;
+  right: 5%;
+  line-height: 20px;
+  font-family: sans-serif;
+  word-spacing: 1px;
+  font-size: 16px;
 }
