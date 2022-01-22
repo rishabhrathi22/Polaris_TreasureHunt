@@ -6,9 +6,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treasure Hunt</title>
+
+    <meta property="og:title" content="GDSC Treasure Hunt">
+    <meta property="og:description" content="desc">
+    <meta property="og:image" content="./images/logo.svg">
+    <meta property="og:url" content="name.com">
+
+    <!-- Main Link Tags  -->
+    <link href="{% static 'images/logo.svg' %}" rel="icon" type="image/png" sizes="16x16">
+    <link href="{% static 'images/logo.svg' %}" rel="icon" type="image/png" sizes="32x32">
+
+
+    <title> Riddle | Treasure Hunt | Home Page | GDSC RCOEM</title>
+
     <link rel="stylesheet" href="{% static 'css/riddle.css' %}">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
 
 <body>
@@ -91,8 +104,11 @@
 
     <script>
         // Timer starts
+        let temp = {{ start_time }}
+        // console.log(temp)
         function getTimeElapsed() {
-            const start_time = new Date({{ start_time }});
+
+            const start_time = new Date(temp);
             const current_time = new Date();
 
             const total = Date.parse(current_time) - Date.parse(start_time);

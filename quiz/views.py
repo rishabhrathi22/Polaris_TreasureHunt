@@ -118,7 +118,8 @@ def solve(request):
             curr_riddle = Riddle.objects.get(ques_no=curr_ques)
         except Exception as e:
             print(e)
-            return HttpResponse("All riddles solved")
+            print("All riddles solved")
+            return redirect('/leaderboard')
 
         # start timer for current riddle
         try:
