@@ -5,8 +5,7 @@
 
 @font-face {
   font-family: avengerence;
-  src: url("/static/fonts/AvengeanceMightiestAvenger-837g.ttf")
-    format("truetype");
+  src: url("/static/fonts/AvengeanceMightiestAvenger-837g.ttf") format("truetype");
 }
 
 @font-face {
@@ -166,8 +165,19 @@ nav {
   overflow: scroll;
 }
 
-.riddleQuestion > p {
+.riddleQuestion1>p {
   padding: 15px;
+  font-family: avengerence;
+  line-height: 1.5rem;
+  letter-spacing: 2px;
+}
+
+.riddleQuestion1 {
+  height: auto;
+  align-self: baseline;
+  margin-top: 120px;
+  overflow: scroll;
+  overflow: hidden;
 }
 
 .gameDetails {
@@ -200,7 +210,7 @@ nav {
   pointer-events: auto;
 }
 
-.modal-window > div {
+.modal-window>div {
   width: 400px;
   position: absolute;
   top: 75%;
@@ -240,7 +250,7 @@ a {
   color: inherit;
 }
 
-.modal-window > div {
+.modal-window>div {
   border-radius: 1rem;
 }
 
@@ -292,16 +302,14 @@ small {
 .riddleQuestion::-webkit-scrollbar-thumb {
   background-color: #3366ff;
   border-radius: 10px;
-  background-image: -webkit-linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.5) 25%,
-    transparent 25%,
-    transparent 50%,
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0.5) 75%,
-    transparent 75%,
-    transparent
-  );
+  background-image: -webkit-linear-gradient(0deg,
+      rgba(255, 255, 255, 0.5) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0.5) 75%,
+      transparent 75%,
+      transparent);
 }
 
 .riddleQuestion::-webkit-scrollbar-corner {
@@ -371,7 +379,7 @@ small {
 
 /*Input focus move up label*/
 
-.form__input:focus + .form__label {
+.form__input:focus+.form__label {
   top: -0.5rem;
   left: 0.8rem;
   color: white;
@@ -383,7 +391,7 @@ small {
 
 /*Input focus sticky top label*/
 
-.form__input:not(:placeholder-shown).form__input:not(:focus) + .form__label {
+.form__input:not(:placeholder-shown).form__input:not(:focus)+.form__label {
   top: 0.5rem;
   left: 0.8rem;
   font-size: 1.5rem;
@@ -403,6 +411,7 @@ small {
   0% {
     transform: translate(0);
   }
+
   20%,
   40%,
   60%,
@@ -411,11 +420,13 @@ small {
     box-shadow: 0px 5px 20px rgb(255, 0, 0);
     border-radius: 0.5rem;
   }
+
   10%,
   30%,
   50% {
     transform: translate(-0.2rem);
   }
+
   70%,
   100% {
     transform: translate(0);
@@ -432,11 +443,9 @@ small {
   align-items: center;
   flex-wrap: wrap;
   background: rgb(34, 75, 195);
-  background: linear-gradient(
-    0deg,
-    rgba(34, 75, 195, 0.3) 0%,
-    rgba(162, 8, 15, 0.1) 100%
-  );
+  background: linear-gradient(0deg,
+      rgba(34, 75, 195, 0.3) 0%,
+      rgba(162, 8, 15, 0.1) 100%);
   color: white;
   text-align: center;
   font-family: myFirstFont;
@@ -449,8 +458,7 @@ small {
   width: 22%;
   height: 70px;
   font-size: 30px;
-  background: linear-gradient(to left, rgba(0, 0, 0, 0.1) 50%, #a2080f 50%)
-    right;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.1) 50%, #a2080f 50%) right;
   background-size: 200%;
   transition: 0.5s ease-in;
   padding-bottom: 10px;
@@ -473,4 +481,16 @@ small {
   font-size: 15px;
   font-weight: 300;
   margin-top: -4px;
+}
+
+.image {
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  mix-blend-mode: lighten;
+  transition: 0.3s ease-in-out;
+}
+
+.img-round1 {
+  right: 20%;
 }

@@ -1,32 +1,14 @@
 {% extends "riddles/base.html" %}
 
 {% block content %}
+{% load static %}
 <div class="main">
 	<div class="riddle">
-		<div class="riddleQuestion">
+		<div class="riddleQuestion1">
 			<h1>Question 1</h1>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente fuga cum delectus deserunt tempora
-				consequatur necessitatibus optio accusamus nobis dolor magni commodi obcaecati adipisci, ducimus
-				facere iste blanditiis aut doloremque.
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum facilis est velit, ullam
-				accusantium ab asperiores tempore veniam id voluptates corporis rerum nam. Dolore praesentium ex
-				vero obcaecati, fugiat delectus sed voluptatem
-				quod doloremque neque expedita facilis ea, recusandae exercitationem nam? Non aut eum est? Facere
-				dolores mollitia ratione ab? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi ut
-				provident porro sed minima hic quis
-				nam, aliquid amet. Autem ex minima consequuntur ducimus ipsam tempora! Harum culpa, deleniti
-				perspiciatis quaerat beatae minus cum odio, a perferendis dolorum debitis eaque? Sunt velit
-				similique veniam quidem quis modi voluptatibus,
-				incidunt nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur veritatis autem
-				ut, quidem neque, sed provident ratione inventore ea, totam modi hic voluptas at? Quia odio iusto,
-				saepe pariatur nemo accusamus fuga,
-				veritatis, adipisci nihil quidem incidunt optio corporis voluptatibus ipsum ullam ipsam dicta
-				temporibus aliquam dolores velit sit qui repellendus ipsa in? Amet veritatis at saepe, et fugit quia
-				minima provident dolorum placeat deserunt
-				quidem iste molestias repellat suscipit voluptate quis illum eligendi voluptatum fugiat totam libero
-				adipisci repudiandae. Nihil, neque aliquam. Quaerat, est repellendus officiis eligendi quod officia,
-				iste reprehenderit iusto autem
-				molestiae, exercitationem sint architecto ullam deserunt.</p>
+			<p>My blood is electricity, my parent is a mechanic. <br> They call me a supercomputer. My name resembles
+				the future. <br> My birth was to defeat Ultron and I am worthy of all powers.
+			</p>
 		</div>
 
 		<div class="l-form form-style">
@@ -39,6 +21,10 @@
 				</div>
 			</form>
 		</div>
+	</div>
+
+	<div class="image img-round1">
+		<img src="{% static 'images/ultron.png' %}" alt="image">
 	</div>
 </div>
 {% endblock content %}
