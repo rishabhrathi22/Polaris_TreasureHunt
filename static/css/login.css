@@ -22,6 +22,7 @@ body {
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
 }
+
 .login-style {
   display: block;
   font-family: Poppins;
@@ -53,6 +54,7 @@ body {
   outline: none;
   background: transparent;
 }
+
 .login-box .user-box label {
   position: absolute;
   font-family: "Nunito";
@@ -65,8 +67,8 @@ body {
   transition: 0.5s;
 }
 
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
+.login-box .user-box input:focus~label,
+.login-box .user-box input:valid~label {
   top: -20px;
   left: 0;
   color: rgba(34, 34, 34, 0.795);
@@ -113,6 +115,7 @@ body {
   0% {
     left: -100%;
   }
+
   50%,
   100% {
     left: 100%;
@@ -133,6 +136,7 @@ body {
   0% {
     top: -100%;
   }
+
   50%,
   100% {
     top: 100%;
@@ -153,6 +157,7 @@ body {
   0% {
     right: -100%;
   }
+
   50%,
   100% {
     right: 100%;
@@ -173,8 +178,17 @@ body {
   0% {
     bottom: -100%;
   }
+
   50%,
   100% {
     bottom: 100%;
   }
+}
+
+#background-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
