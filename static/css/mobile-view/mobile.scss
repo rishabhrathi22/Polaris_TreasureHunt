@@ -18,7 +18,9 @@
     }
 }
 
-@media (max-width: 1350px) {
+$pc-width:50px;
+
+@media (max-width:$pc-width) {
     body {
         overflow: hidden;
     }

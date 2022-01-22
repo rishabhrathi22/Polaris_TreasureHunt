@@ -59,8 +59,8 @@ def solve(request):
             # check answer
             try:
                 riddle = Riddle.objects.get(ques_no=data['ques_no'])
-                user_ans = data['answer']
-                correct_ans = riddle.answer
+                user_ans = data['answer'].lower()
+                correct_ans = riddle.answer.lower()
 
                 user_data = UserData.objects.get(user=current_user)
 
