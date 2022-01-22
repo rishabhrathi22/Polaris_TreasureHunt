@@ -11,8 +11,16 @@ class Riddle(models.Model):
     ques_no = models.IntegerField()
     # riddle = models.CharField(max_length = 10000)
     answer = models.CharField(max_length = 1000)
+    hint = models.CharField(max_length = 1000)
     correct_points = models.IntegerField()
     hint_points = models.IntegerField()
+
+class HintData(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    ques = models.ForeignKey(Riddle, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = (('user', 'ques'),)
 
 class History(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

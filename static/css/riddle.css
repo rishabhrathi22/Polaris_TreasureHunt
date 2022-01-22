@@ -176,6 +176,104 @@ nav {
   margin-right: 20px;
 }
 
+/* MOdal --------------- */
+
+.modal-window {
+  position: fixed;
+  /* background-color: rgba(255, 255, 255, 0.25); */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  color: wheat;
+  font-family: avengerence;
+}
+
+.modal-window:target {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-window > div {
+  width: 400px;
+  position: absolute;
+  top: 75%;
+  right: -10%;
+  transform: translate(-50%, -50%);
+  padding: 2em;
+  background: black;
+}
+
+.modal-window header {
+  font-weight: bold;
+}
+
+.modal-window h1 {
+  font-size: 150%;
+  margin: 0 0 15px;
+}
+
+.modal-close {
+  color: red;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 70px;
+  text-decoration: none;
+  font-family: avengerence;
+}
+
+.modal-close:hover {
+  color: rgba(247, 2, 2, 0.671);
+}
+
+a {
+  color: inherit;
+}
+
+.modal-window > div {
+  border-radius: 1rem;
+}
+
+.modal-window div:not(:last-of-type) {
+  margin-bottom: 15px;
+}
+
+small {
+  color: violet;
+}
+
+.btn-modal {
+  text-decoration: none;
+}
+
+.btn i {
+  padding-right: 0.3em;
+}
+
+.confirm-btn {
+  background-color: white;
+  border: 0.5px solid white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-top: 8px;
+  color: black;
+  font-family: avengerence;
+}
+
+.confirm-btn:hover {
+  color: #ff0815;
+}
+
 /* ScrollBar */
 
 .riddleQuestion::-webkit-scrollbar-track {

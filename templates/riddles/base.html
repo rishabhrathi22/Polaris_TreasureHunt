@@ -67,20 +67,32 @@
         <div class="card">
             <div class="container">
                 <h4><b>{{ hints_taken }}</b></h4>
-                <p class="ftext ">HINTS TAKEN</p>
+                <p class="ftext">HINTS TAKEN</p>
             </div>
         </div>
         <div class="card">
-            <div class="container" onclick="window.location='/hint'">
-                <h4><b>HINT</b></h4>
+            <div class="container">
+                <a class="btn-modal" data-toggle="hintModal" href="#hintModal">HINT</a>
             </div>
         </div>
     </footer>
 
+    <div id="hintModal" class="modal-window">
+        <div>
+            <a href="#" title="Close" class="modal-close">Close</a>
+            <h1>HINT</h1>
+            <div id="hintArea">
+                <div>Do you really want to take hint. It will cost you {{ hint_points }} points.</div>
+                <div>Ps. Points won't be deducted if already hint taken</div>
+                <button class="confirm-btn" id="btn-confirm" onclick="getHint();">Confirm</button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Timer starts
         function getTimeElapsed() {
             const start_time = new Date({{ start_time }});
-
             const current_time = new Date();
 
             const total = Date.parse(current_time) - Date.parse(start_time);
@@ -95,9 +107,6 @@
         }
 
         function initializeClock(id) {
-            // const clock = document.getElementById(id);
-            // const minutesSpan = clock.querySelector('.minutes');
-            // const secondsSpan = clock.querySelector('.seconds');
             const minutesSpan = document.getElementsByClassName('minutes')[0];
             const secondsSpan = document.getElementsByClassName('seconds')[0];
 
@@ -112,6 +121,44 @@
         }
 
         initializeClock();
+        // Timer ends
+
+        // Disable right click starts
+        document.addEventListener("contextmenu", function (event) {
+            event.preventDefault();
+            alert('Right Click is Disabled');
+        }, false);
+
+        document.addEventListener("keydown", function (event) {
+            if (event.ctrlKey) {
+                // event.preventDefault();
+            }
+        });
+        // Disable right click ends
+
+        // Hint section starts
+        function getHint() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    const data = JSON.parse(this.responseText);
+                    const hintArea = document.getElementById("hintArea");
+
+                    if ("error" in data) {
+                        hintArea.innerHTML = data["error"];
+                    }
+                    else {
+                        hintArea.innerHTML = data["hint"];
+                    }
+                }
+            };
+
+            xhttp.open("GET", "/hint?ques={{ ques_no }}", true);
+            xhttp.send();
+            location.href = "#hintModal";
+        }
+        // Hint section ends
+
     </script>
 
 </body>

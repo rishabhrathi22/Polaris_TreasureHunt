@@ -18,19 +18,21 @@ def home(request):
 	if current_user.is_anonymous:
 		return redirect('/accounts/login')
 
-	try:
-		user_data = UserData.objects.get(user = current_user)
-	except Exception as e:
-		print(e)
-		user_data = UserData.objects.create(user = current_user)
-		user_data.save()
+	return render(request, "index.html")
 
-	context = {
-		"score": user_data.score,
-		"hints_taken": user_data.hints_taken
-	}
+	# try:
+	# 	user_data = UserData.objects.get(user = current_user)
+	# except Exception as e:
+	# 	print(e)
+	# 	user_data = UserData.objects.create(user = current_user)
+	# 	user_data.save()
 
-	return render(request, 'index.html', context = context)
+	# context = {
+	# 	"score": user_data.score,
+	# 	"hints_taken": user_data.hints_taken
+	# }
+
+	# return render(request, 'index.html', context = context)
 
 
 def solve(request):
@@ -118,6 +120,7 @@ def solve(request):
 
 		context = {
 			'ques_no': curr_riddle.ques_no,
+			'hint_points': curr_riddle.hint_points,
 			'team_name': user_data.user,
 			'score': user_data.score,
 			'hints_taken': user_data.hints_taken,
@@ -125,10 +128,6 @@ def solve(request):
 		}
 
 		return render(request, 'riddles/riddle' + str(curr_ques) + '.html', context)
-
-
-def rules(request):
-	return render(request, 'rules.html')
 
 
 def leaderboard(request):
@@ -176,3 +175,50 @@ def leaderboard(request):
 	}
 
 	return render(request, 'leaderboard.html', context = context)
+
+
+def get_hint(request):
+	current_user = request.user
+
+	# user not logged in
+	if current_user.is_anonymous:
+		return redirect('/accounts/login')
+
+	# check if ques number provided
+	if request.GET.get("ques", None) == None:
+		return JsonResponse({"error" : "Give question number"}, safe = False)
+
+	# check if invalid question number
+	ques_no = int(request.GET["ques"])
+	if ques_no < 1 or ques_no > 8:
+		return JsonResponse({"error" : "Invalid question number"}, safe = False)
+
+	try:
+		riddle = Riddle.objects.get(ques_no = ques_no)
+		hint = riddle.hint
+
+		# check whether this ques hint already taken by user
+		try:
+			hint_data = HintData.objects.get(user = current_user, ques = riddle)
+			return JsonResponse({"hint" : hint}, safe = False)
+		except Exception as e:
+			print(e)
+
+		user = UserData.objects.get(user = current_user)
+
+		# check whether user has enough points
+		if (user.score < riddle.hint_points):
+			return JsonResponse({"error" : "You don't have enough points"}, safe = False)
+
+		user.score -= riddle.hint_points
+		user.hints_taken += 1
+		user.save()
+
+		hint_data = HintData.objects.create(user = current_user, ques = riddle)
+		hint_data.save()
+
+		return JsonResponse({"hint" : hint}, safe = False)
+	except Exception as e:
+		print(e)
+
+	return JsonResponse({"error" : "Check Logs"}, safe = False)
