@@ -1,32 +1,21 @@
 {% extends "riddles/base.html" %}
 
 {% block content %}
+{% load static %}
 <div class="main">
 	<div class="riddle">
-		<div class="riddleQuestion">
-			<h1>Question 4</h1>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente fuga cum delectus deserunt tempora
-				consequatur necessitatibus optio accusamus nobis dolor magni commodi obcaecati adipisci, ducimus
-				facere iste blanditiis aut doloremque.
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum facilis est velit, ullam
-				accusantium ab asperiores tempore veniam id voluptates corporis rerum nam. Dolore praesentium ex
-				vero obcaecati, fugiat delectus sed voluptatem
-				quod doloremque neque expedita facilis ea, recusandae exercitationem nam? Non aut eum est? Facere
-				dolores mollitia ratione ab? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi ut
-				provident porro sed minima hic quis
-				nam, aliquid amet. Autem ex minima consequuntur ducimus ipsam tempora! Harum culpa, deleniti
-				perspiciatis quaerat beatae minus cum odio, a perferendis dolorum debitis eaque? Sunt velit
-				similique veniam quidem quis modi voluptatibus,
-				incidunt nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur veritatis autem
-				ut, quidem neque, sed provident ratione inventore ea, totam modi hic voluptas at? Quia odio iusto,
-				saepe pariatur nemo accusamus fuga,
-				veritatis, adipisci nihil quidem incidunt optio corporis voluptatibus ipsum ullam ipsam dicta
-				temporibus aliquam dolores velit sit qui repellendus ipsa in? Amet veritatis at saepe, et fugit quia
-				minima provident dolorum placeat deserunt
-				quidem iste molestias repellat suscipit voluptate quis illum eligendi voluptatum fugiat totam libero
-				adipisci repudiandae. Nihil, neque aliquam. Quaerat, est repellendus officiis eligendi quod officia,
-				iste reprehenderit iusto autem
-				molestiae, exercitationem sint architecto ullam deserunt.</p>
+		<div class="riddleQuestion4">
+			<p>
+				PART 1: <br><br> If SPIDERMAN is written as “DAOFRTQSM”. <br> How will you write DR STRANGE as = ? <br>
+				THANOS = ?
+			</p><br>
+			<p> <br> Part 2:<br> IN A LANGUAGE HULK IS WRITTEN AS IXSA AND THOR IS WRITTEN AS ZIGK. IN SAME LANGUAGE the
+				following will be written as: <br>IRONMAN: ______ ? <br>CAPTAIN AMERICA : _______?
+
+			</p>
+			<p> <br> Now you have to pick : <br> 6th and 7th char from 1st code <br>5th char from 2nd code<br> 1st char
+				from 3rd code <br>11th char from 4th code.<br><br> And rearrange them to make a work related to marvel.
+			</p>
 		</div>
 
 		<div class="l-form form-style">
@@ -39,6 +28,9 @@
 				</div>
 			</form>
 		</div>
+	</div>
+	<div class="image img-round4">
+		<img src="{% static 'images/Avenger.png' %}" alt="">
 	</div>
 </div>
 {% endblock content %}

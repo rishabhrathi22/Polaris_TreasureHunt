@@ -1,0 +1,37 @@
+{% extends "riddles/base.html" %}
+
+{% block content %}
+{% load static %}
+<div class="main">
+    <div class="riddle">
+
+        <div class="riddleQuestion1 question6">
+
+            <p>
+                There are 3000 doors in a row, all doors are initially closed.<br> A person walks through all doors
+                multiple times and toggle (if open then close, if close then open) them in the following way:
+                <br> In the first walk, the person toggles every door In the second walk, the person toggles every
+                second door, i.e., 2nd, 4th, 6th, 8th, … <br>In the third walk, the person toggles every third door,
+                i.e. 3rd, 6th, 9th,…<br> And likewise,
+                In the 3000th walk, the person toggles the 3000th door.<br> Can you help the Avengers by telling how
+                many doors will be open in the end?
+
+            </p>
+        </div>
+
+        <div class="l-form form-style">
+            <form action="/solve" method="post" class="form">
+                {% csrf_token %}
+                <input type="hidden" id="ques_no" name="ques_no" value="{{ ques_no }}">
+                <div class="form__div">
+                    <input class="form__input" id="answer" type="text" name="answer" maxlength="100" required
+                        placeholder="Enter your answer" autocomplete="off">>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="image img-round6">
+        <img src="{% static 'images/portal.png' %}" alt="">
+    </div>
+</div>
+{% endblock content %}
