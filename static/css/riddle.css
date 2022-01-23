@@ -541,13 +541,9 @@ small {
   font-family: sans-serif;
 }
 
-.riddleQuestion4 p {
-  font-family: sans-serif;
-}
-
-.riddleQuestion5 p {
-  font-family: sans-serif;
-  font-size: 20px;
+.riddleQuestion5 {
+  padding-left: 100px;
+  margin-top: -60px;
 }
 
 .part {
@@ -636,4 +632,8 @@ small {
   cursor: text;
   margin-top: 10px;
   font-size: large;
+}
+
+.riddleQuestion5 h2 {
+  margin-left: -25px;
 }
