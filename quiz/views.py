@@ -146,7 +146,6 @@ def solve(request):
             'score': user_data.score,
             'hints_taken': user_data.hints_taken,
             'start_time': hist.start_time.timestamp()*1000,
-            'isHintAvailable': curr_riddle.hint_points,
             'isHintTaken': hintTaken
         }
 

@@ -117,8 +117,8 @@
 
     <script>
         window.onload = () => {
-            let temp = '{{ isHintAvailable }}'
-            if (parseInt(temp) == 0) {
+            let isHintAvailable = '{{ hint_points }}'
+            if (parseInt(isHintAvailable) == 0) {
                 document.getElementById("hintArea").innerHTML = "No hint for this one..!"
             }
 
