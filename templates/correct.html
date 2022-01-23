@@ -22,6 +22,8 @@
 
     <link rel="stylesheet" href="{% static 'css/buffer-style/buffer.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/mobile-view/mobile.min.css' %}">
+
+    <script src="{% static 'js/correct.js' %}"></script>
 </head>
 
 <body>
@@ -30,10 +32,9 @@
             Please view this page on a laptop/Desktop!!
         </p>
     </section>
-    <h2>Correct Answer</h2>
-    <img src="{% static 'images/rightAnswer.png' %}" style="width: fit-content;" alt="Correct answer">
-    <a href="../solve">
-        Next
+    <h1>correct</h1>
+    <a href="/solve" style="max-width: 140px;">
+        <button>next</button>
     </a>
 
 </body>
