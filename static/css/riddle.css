@@ -502,12 +502,15 @@ small {
 
 .round3-clue {
   position: absolute;
-  top: 35%;
-  right: 5%;
-  line-height: 20px;
-  font-family: sans-serif;
-  word-spacing: 1px;
-  font-size: 16px;
+  top: 25%;
+  right: 13%;
+  max-width: 550px;
+}
+
+.round3-clue li {
+  font-family: 'Montserrat', sans-serif;
+  font-size: large;
+  margin-bottom: 10px;
 }
 
 .riddleQuestion4 p {
