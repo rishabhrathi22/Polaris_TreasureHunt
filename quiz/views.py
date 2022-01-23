@@ -8,12 +8,13 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 
-def landing(request):
-    current_user = request.user
-    print(current_user)
-    if current_user.is_anonymous:
-        return redirect('/accounts/login')
-    return render(request, 'home.html')
+# def landing(request):
+#     current_user = request.user
+
+#     if current_user.is_anonymous:
+#         return redirect('/accounts/login')
+
+#     return render(request, 'home.html')
 
 
 def home(request):
@@ -23,21 +24,14 @@ def home(request):
     if current_user.is_anonymous:
         return redirect('/accounts/login')
 
-    return render(request, "index.html")
+    try:
+    	user_data = UserData.objects.get(user = current_user)
+    except Exception as e:
+    	print(e)
+    	user_data = UserData.objects.create(user = current_user)
+    	user_data.save()
 
-    # try:
-    # 	user_data = UserData.objects.get(user = current_user)
-    # except Exception as e:
-    # 	print(e)
-    # 	user_data = UserData.objects.create(user = current_user)
-    # 	user_data.save()
-
-    # context = {
-    # 	"score": user_data.score,
-    # 	"hints_taken": user_data.hints_taken
-    # }
-
-    # return render(request, 'index.html', context = context)
+    return render(request, 'index.html')
 
 
 def solve(request):
