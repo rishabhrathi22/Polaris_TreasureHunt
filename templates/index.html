@@ -42,8 +42,13 @@
     </section>
 
     <div class="btn-set">
-        <a href="{% url 'logout'%}?next={{request.path}}" class="log-out">Logout</a>
-        <a href="/solve">Start</a>
+
+        <a href="{% url 'logout'%}?next={{request.path}}" class="log-out">
+            <img src="{% static 'images/logOut.png' %}" alt="">
+        </a>
+        <a href="/solve">
+            <img src="{% static 'images/start-btn.png' %}" alt="">
+        </a>
     </div>
 
 </body>

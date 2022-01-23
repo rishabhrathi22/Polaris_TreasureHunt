@@ -21,32 +21,24 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 100px;
+    gap: 150px;
     align-items: center;
     margin-top: -60px;
-    padding-bottom: 20px;
 
     a {
         text-decoration: none;
-        color: navy;
-        background-color: #fff;
         border: none;
-        border-radius: 4px;
-        max-width: 100px;
-        padding: 10px 25px;
-        text-transform: uppercase;
+        cursor: pointer;
+        width: auto;
+    }
+
+    img {
         cursor: pointer;
 
-        &:hover {
+        &:active {
             transform: scale(.9);
         }
 
-        &:active {
-            transform: scale(1.1);
-        }
-    }
-
-    .log-out {
-        color: red;
+        width: 400px;
     }
 }
