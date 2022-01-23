@@ -1,6 +1,7 @@
 {% extends "riddles/base.html" %}
 
 {% block content %}
+{% load static %}
 <div class="main">
 	<div class="riddle">
 		<div class="riddleQuestion2">
@@ -32,6 +33,11 @@
 				</div>
 			</form>
 		</div>
+	</div>
+	<div class="word-holder">
+		<img src="{% static 'images/wordSearch.png' %}" alt="">
+		<canvas id="canvas" width="600px" height="450px"></canvas>
+		<button onclick="erase()" title="erase"><i class="fas fa-eraser" title="erase"></i></button>
 	</div>
 </div>
 {% endblock content %}
