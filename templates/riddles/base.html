@@ -107,10 +107,9 @@
             <a href="#" title="Close" class="modal-close">Close</a>
             <h1>HINT</h1>
             <div id="hintArea">
-                <div>Do you really want to take hint. It will cost you<div id="hint-point"> {{ hint_points }} </div>
-                    points.
+                <div>Do you really want to take hint. It will cost you {{ hint_points }} points.
                 </div>
-                <div>Ps. Points won't be deducted if already hint taken</div>
+                <div>PS: Points won't be deducted if already hint taken</div>
                 <button class="confirm-btn" id="btn-confirm" onclick="getHint();">Confirm</button>
             </div>
         </div>
@@ -118,17 +117,17 @@
 
     <script>
         window.onload = () => {
-            // let point = document.getElementById('hint-point')
-            // if (Number(point.innerText) == 0) {
-            //     document.getElementById("hintArea").innerHTML = "No hint for this one..!"
-            // }
+            let temp = '{{ isHintAvailable }}'
+            if (parseInt(temp) == 0) {
+                document.getElementById("hintArea").innerHTML = "No hint for this one..!"
+            }
         }
         // Timer starts
-        let temp = {{ start_time }}
-        // console.log(temp)
+        let temp = '{{ start_time }}'
+
         function getTimeElapsed() {
 
-            const start_time = new Date(temp);
+            const start_time = new Date(parseInt(temp));
             const current_time = new Date();
 
             const total = Date.parse(current_time) - Date.parse(start_time);
@@ -200,16 +199,3 @@
 </body>
 
 </html>
-
-
-<!-- // Code for truncating Team Name -->
-<!-- <script>
-	var t = "this is a longish string of text";
-
-	document.write("1:   " + t.replace(/^(.{1}[^\s]*).*/, "$1") + "\n");
-	document.write("2:   " + t.replace(/^(.{2}[^\s]*).*/, "$1") + "\n");
-	document.write("5:   " + t.replace(/^(.{5}[^\s]*).*/, "$1") + "\n");
-	document.write("11:  " + t.replace(/^(.{11}[^\s]*).*/, "$1") + "\n");
-	document.write("20:  " + t.replace(/^(.{20}[^\s]*).*/, "$1") + "\n");
-	document.write("100: " + t.replace(/^(.{100}[^\s]*).*/, "$1") + "\n");
-	</script> -->

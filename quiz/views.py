@@ -135,7 +135,8 @@ def solve(request):
             'team_name': user_data.user,
             'score': user_data.score,
             'hints_taken': user_data.hints_taken,
-            'start_time': hist.start_time.timestamp()*1000
+            'start_time': hist.start_time.timestamp()*1000,
+            'isHintAvailable': curr_riddle.hint_points
         }
 
         return render(request, 'riddles/riddle' + str(curr_ques) + '.html', context)
