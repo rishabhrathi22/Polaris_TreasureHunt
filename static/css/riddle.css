@@ -533,12 +533,8 @@ small {
 }
 
 .question6 {
-  margin-top: -0.1rem;
-}
-
-.question6 p {
-  margin-top: 2rem;
-  font-family: sans-serif;
+  margin-top: -40px;
+  margin-left: -20px;
 }
 
 .riddleQuestion5 {
@@ -548,11 +544,6 @@ small {
 
 .part {
   margin-left: 50px;
-}
-
-.question7 p {
-  font-family: sans-serif;
-  font-size: 20px;
 }
 
 .img-round6 img {
@@ -636,4 +627,8 @@ small {
 
 .riddleQuestion5 h2 {
   margin-left: -25px;
+}
+
+.question7 {
+  margin-top: 0px;
 }
