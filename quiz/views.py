@@ -129,6 +129,16 @@ def solve(request):
             print(e)
             hist = History.objects.get(user=current_user, ques=curr_riddle)
 
+        # check is user has already taken hint
+        hintTaken = False
+        try:
+            hint_data = HintData.objects.get(
+                user=current_user, ques=curr_riddle)
+            if(hint_data):
+                hintTaken = True
+        except Exception as e:
+            print(e)
+
         context = {
             'ques_no': curr_riddle.ques_no,
             'hint_points': curr_riddle.hint_points,
@@ -136,7 +146,8 @@ def solve(request):
             'score': user_data.score,
             'hints_taken': user_data.hints_taken,
             'start_time': hist.start_time.timestamp()*1000,
-            'isHintAvailable': curr_riddle.hint_points
+            'isHintAvailable': curr_riddle.hint_points,
+            'isHintTaken': hintTaken
         }
 
         return render(request, 'riddles/riddle' + str(curr_ques) + '.html', context)
@@ -230,7 +241,7 @@ def get_hint(request):
         hint_data = HintData.objects.create(user=current_user, ques=riddle)
         hint_data.save()
 
-        return JsonResponse({"hint": hint}, safe=False)
+        return JsonResponse({"hint": hint, "points": user.score}, safe=False)
     except Exception as e:
         print(e)
 
