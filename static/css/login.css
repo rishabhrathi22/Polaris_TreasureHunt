@@ -2,6 +2,11 @@ html {
   height: 100%;
 }
 
+@font-face {
+  font-family: myFirstFont;
+  src: url("/static/fonts/avenger.ttf") format("truetype");
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -191,4 +196,28 @@ body {
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
+}
+
+.btn {
+  background-color: #ff0815;
+  color: white;
+  border-radius: 4px;
+  border: #ff0815;
+  font-family: myFirstFont;
+  letter-spacing: 3px;
+  z-index: 10;
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  padding: 8px 16px;
+  padding-top: 12px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: scale(.9);
+}
+
+.btn:active {
+  transform: scale(1.1);
 }
