@@ -6,12 +6,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treasure Hunt</title>
+
+    <meta property="og:title" content="GDSC Treasure Hunt">
+    <meta property="og:description" content="desc">
+    <meta property="og:image" content="./images/logo.svg">
+    <meta property="og:url" content="name.com">
+
+    <!-- Main Link Tags  -->
+    <link href="{% static 'images/logo.svg' %}" rel="icon" type="image/png" sizes="16x16">
+    <link href="{% static 'images/logo.svg' %}" rel="icon" type="image/png" sizes="32x32">
+
+
+    <title> Riddle | Treasure Hunt | Home Page | GDSC RCOEM</title>
+
     <link rel="stylesheet" href="{% static 'css/riddle.css' %}">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="{% static 'css/mobile-view/mobile.min.css' %}">
+
 </head>
 
 <body>
+
+    <!-- when page is opened in mobile -->
+    <section id="mobile-screen">
+        <p>
+            Please view this page on a laptop/Desktop!!
+        </p>
+    </section>
+
     <nav>
         <div class="flex">
             <div class="teamDetails">
@@ -29,7 +53,8 @@
             </div>
         </div>
         <div class="options">
-            <a href="/rules" target="_blank">
+            <a href="https://docs.google.com/document/d/1-J5T7KUhG-z5WrTWe_H0xnub7jUtkR56w-j2MqOVSrg/edit?usp=sharing"
+                target="_blank">
                 <button class="btn " id="myBtn"> RULES </button>
             </a>
 
@@ -60,7 +85,7 @@
         </div>
         <div class="card">
             <div class="container">
-                <h4><b>{{ score }}</b></h4>
+                <h4><b id="user-point">{{ score }}</b></h4>
                 <p class="ftext">POINTS</p>
             </div>
         </div>
@@ -82,17 +107,33 @@
             <a href="#" title="Close" class="modal-close">Close</a>
             <h1>HINT</h1>
             <div id="hintArea">
-                <div>Do you really want to take hint. It will cost you {{ hint_points }} points.</div>
-                <div>Ps. Points won't be deducted if already hint taken</div>
+                <div>Do you really want to take hint. It will cost you {{ hint_points }} points.
+                </div>
+                <div>PS: Points won't be deducted if already hint taken</div>
                 <button class="confirm-btn" id="btn-confirm" onclick="getHint();">Confirm</button>
             </div>
         </div>
     </div>
 
     <script>
+        window.onload = () => {
+            let isHintAvailable = '{{ hint_points }}'
+            if (parseInt(isHintAvailable) == 0) {
+                document.getElementById("hintArea").innerHTML = "No hint for this one..!"
+            }
+
+            let isHintTaken = '{{ isHintTaken }}'
+            // console.log(isHintTaken)
+            if (isHintTaken === 'True') {
+                getHint();
+            }
+        }
         // Timer starts
+        let temp = '{{ start_time }}'
+
         function getTimeElapsed() {
-            const start_time = new Date({{ start_time }});
+
+            const start_time = new Date(parseInt(temp));
             const current_time = new Date();
 
             const total = Date.parse(current_time) - Date.parse(start_time);
@@ -150,12 +191,16 @@
                     else {
                         hintArea.innerHTML = data["hint"];
                     }
+
+                    if ("points" in data) {
+                        document.getElementById("user-point").innerText = data["points"]
+                    }
                 }
             };
 
             xhttp.open("GET", "/hint?ques={{ ques_no }}", true);
             xhttp.send();
-            location.href = "#hintModal";
+            // location.href = "#hintModal";
         }
         // Hint section ends
 
@@ -164,16 +209,3 @@
 </body>
 
 </html>
-
-
-<!-- // Code for truncating Team Name -->
-<!-- <script>
-	var t = "this is a longish string of text";
-
-	document.write("1:   " + t.replace(/^(.{1}[^\s]*).*/, "$1") + "\n");
-	document.write("2:   " + t.replace(/^(.{2}[^\s]*).*/, "$1") + "\n");
-	document.write("5:   " + t.replace(/^(.{5}[^\s]*).*/, "$1") + "\n");
-	document.write("11:  " + t.replace(/^(.{11}[^\s]*).*/, "$1") + "\n");
-	document.write("20:  " + t.replace(/^(.{20}[^\s]*).*/, "$1") + "\n");
-	document.write("100: " + t.replace(/^(.{100}[^\s]*).*/, "$1") + "\n");
-	</script> -->

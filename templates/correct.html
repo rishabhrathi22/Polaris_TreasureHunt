@@ -7,15 +7,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Correct Answer</title>
+
+    <meta property="og:title" content="GDSC Treasure Hunt">
+    <meta property="og:description" content="desc">
+    <meta property="og:image" content="./images/logo.svg">
+    <meta property="og:url" content="name.com">
+
+    <!-- Main Link Tags  -->
+    <link href="{% static 'images/logo.svg' %}" rel="icon" type="image/png" sizes="16x16">
+    <link href="{% static 'images/logo.svg' %}" rel="icon" type="image/png" sizes="32x32">
+
+
+    <title> Correct Answer | Treasure Hunt | Home Page | GDSC RCOEM</title>
+
     <link rel="stylesheet" href="{% static 'css/buffer-style/buffer.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mobile-view/mobile.min.css' %}">
+
+    <script src="{% static 'js/correct.js' %}"></script>
 </head>
 
 <body>
-    <h2>Correct Answer</h2>
-    <img src="{% static 'images/rightAnswer.png' %}" alt="Correct answer">
-    <a href="/solve">
-        Next
+    <section id="mobile-screen">
+        <p>
+            Please view this page on a laptop/Desktop!!
+        </p>
+    </section>
+    <h1>correct</h1>
+    <a href="/solve" style="max-width: 140px;">
+        <button>next</button>
     </a>
 
 </body>

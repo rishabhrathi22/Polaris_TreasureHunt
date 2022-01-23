@@ -1,0 +1,61 @@
+{% extends "riddles/base.html" %}
+
+{% block content %}
+{% load static %}
+<div class="main">
+    <div class="riddle">
+        <div class="riddleQuestion5">
+
+
+            <div class="riddle5">
+
+
+                <p class="part">
+                <p>Part1:</p>
+                1 + 1 = 0 <br> 5 + 9 = 12
+                <br> 11 + 6 = 13
+                <br> 33 + 5 = z
+                </p>
+                <br>
+                <p class="part">
+                <p>Part2:</p>
+                22 -> 124
+                <br> 1 -> 0
+                <br> 80 -> 46
+
+                <br> 48 -> 45
+                <br> z -> y<br><br>
+
+                </p>
+                <p class="part">
+
+
+                <p>Part3:</p>
+                42 -> 1936
+                <br> 21 -> 4
+                <br> 82 -> 7744
+                <br> 52 -> x
+                </p>
+                <br>
+                <span>Ans: x-y
+                </span>
+
+            </div>
+        </div>
+
+        <div class="l-form form-style">
+            <form action="/solve" method="post" class="form">
+                {% csrf_token %}
+                <input type="hidden" id="ques_no" name="ques_no" value="{{ ques_no }}">
+                <div class="form__div">
+                    <input class="form__input" id="answer" type="text" name="answer" maxlength="100" required
+                        placeholder="Enter your answer" autocomplete="off">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="image img-round1">
+        <img src="{% static 'images/ultron.png' %}" alt="">
+    </div>
+</div>
+{% endblock content %}

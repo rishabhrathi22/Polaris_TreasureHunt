@@ -1,0 +1,34 @@
+{% extends "riddles/base.html" %}
+
+{% block content %}
+{% load static %}
+<div class="main">
+    <div class="riddle">
+
+        <div class="riddleQuestion1 question7">
+            <h1>Coding</h1>
+            <p>
+                In a different universe instead of 6 infinity stone, it has n different types of infinity stones. There
+                are ai stones of ith type. Thanos has 2 containers. Both has a capacity of k stones. 1 container can
+                hold only one type of stone at same time. Different
+                containers can hold different types of stones at a single time. Find time taken to bring all stones.
+
+            </p>
+        </div>
+
+        <div class="l-form form-style">
+            <form action="/solve" method="post" class="form">
+                {% csrf_token %}
+                <input type="hidden" id="ques_no" name="ques_no" value="{{ ques_no }}">
+                <div class="form__div">
+                    <input class="form__input" id="answer" type="text" name="answer" maxlength="100" required
+                        placeholder="Enter your answer" autocomplete="off">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="image img-round8">
+        <img src="{% static 'images/stones.png' %}" alt="">
+    </div>
+</div>
+{% endblock content %}

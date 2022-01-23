@@ -7,13 +7,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treasure Hunt</title>
+
+    <meta property="og:title" content="GDSC Treasure Hunt">
+    <meta property="og:description" content="desc">
+    <meta property="og:image" content="./images/logo.svg">
+    <meta property="og:url" content="name.com">
+
+    <!-- Main Link Tags  -->
+    <link href="{% static 'images/logo.svg' %}" rel="icon" type="image/png" sizes="16x16">
+    <link href="{% static 'images/logo.svg' %}" rel="icon" type="image/png" sizes="32x32">
+
+    <title> Treasure Hunt | Home Page | GDSC RCOEM</title>
+
     <link rel="stylesheet" href="{% static 'css/home-style/home.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mobile-view/mobile.min.css' %}">
 </head>
 
-
 <body>
-
+    <section id="mobile-screen">
+        <p>
+            Please view this page on a laptop/Desktop!!
+        </p>
+    </section>
     <section>
         <div class="div">
             <img src="{% static 'images/part1.png' %}" alt="">
@@ -27,7 +42,7 @@
     </section>
 
     <div class="btn-set">
-        <!-- <a href="{% url 'logout'%}?next={{request.path}}" class="log-out">Logout</a> -->
+        <a href="{% url 'logout'%}?next={{request.path}}" class="log-out">Logout</a>
         <a href="/solve">Start</a>
     </div>
 
