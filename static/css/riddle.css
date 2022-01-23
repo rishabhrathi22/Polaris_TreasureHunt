@@ -502,7 +502,7 @@ small {
 
 .round3-clue {
   position: absolute;
-  top: 25%;
+  top: 15%;
   right: 13%;
   max-width: 550px;
 }
@@ -513,8 +513,18 @@ small {
   margin-bottom: 10px;
 }
 
+.riddleQuestion4 {
+  padding-left: 40px;
+  margin-top: -40px;
+}
+
 .riddleQuestion4 p {
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-size: large;
+}
+
+.riddleQuestion4 ol {
+  margin-bottom: 10px;
 }
 
 .img-round4:hover {
@@ -594,15 +604,21 @@ small {
 }
 
 .riddle h2,
-.riddle h1 {
+.riddle h1,
+.round3-clue h2 {
   font-family: myFirstFont;
   margin: 10px 0;
 }
 
 .riddle p,
-.riddle ol {
+.riddle ol,
+.round3-clue ol {
   padding-left: 30px;
   font-size: large;
+}
+
+.round3-clue ol {
+  padding-left: 50px;
 }
 
 .riddle ol {

@@ -1,5 +1,5 @@
 let canvas, ctx, flag = 0;
-let color = "rgba(28,239,194,0.07)"
+let color = "rgba(28,239,194,0.1)"
 let radius = 28
 let pointArray = []
 
