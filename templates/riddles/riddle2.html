@@ -1,32 +1,26 @@
 {% extends "riddles/base.html" %}
 
 {% block content %}
+{% load static %}
 <div class="main">
 	<div class="riddle">
-		<div class="riddleQuestion">
-			<h1>Question 2</h1>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente fuga cum delectus deserunt tempora
-				consequatur necessitatibus optio accusamus nobis dolor magni commodi obcaecati adipisci, ducimus
-				facere iste blanditiis aut doloremque.
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum facilis est velit, ullam
-				accusantium ab asperiores tempore veniam id voluptates corporis rerum nam. Dolore praesentium ex
-				vero obcaecati, fugiat delectus sed voluptatem
-				quod doloremque neque expedita facilis ea, recusandae exercitationem nam? Non aut eum est? Facere
-				dolores mollitia ratione ab? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi ut
-				provident porro sed minima hic quis
-				nam, aliquid amet. Autem ex minima consequuntur ducimus ipsam tempora! Harum culpa, deleniti
-				perspiciatis quaerat beatae minus cum odio, a perferendis dolorum debitis eaque? Sunt velit
-				similique veniam quidem quis modi voluptatibus,
-				incidunt nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur veritatis autem
-				ut, quidem neque, sed provident ratione inventore ea, totam modi hic voluptas at? Quia odio iusto,
-				saepe pariatur nemo accusamus fuga,
-				veritatis, adipisci nihil quidem incidunt optio corporis voluptatibus ipsum ullam ipsam dicta
-				temporibus aliquam dolores velit sit qui repellendus ipsa in? Amet veritatis at saepe, et fugit quia
-				minima provident dolorum placeat deserunt
-				quidem iste molestias repellat suscipit voluptate quis illum eligendi voluptatum fugiat totam libero
-				adipisci repudiandae. Nihil, neque aliquam. Quaerat, est repellendus officiis eligendi quod officia,
-				iste reprehenderit iusto autem
-				molestiae, exercitationem sint architecto ullam deserunt.</p>
+		<div class="riddleQuestion2">
+
+			<h1>Statement: </h1>
+			<p>
+				Find different characters name, collect their first letter and arrange them in alphabetical order to
+				get the <b>key</b>.
+				<br>
+			<h2><b>Clues</b></h2>
+			<ol>
+				<li>I have successfully privatized world peace</li>
+				<li>At your service sir</li>
+				<li>It's a quite big name, but AVENGERS are taken care of by them. </li>
+				<li>I have Stark internship to do.</li>
+				<li>I was made out of an A.I</li>
+				<li>I know arrows very well.</li>
+			</ol>
+			</p>
 		</div>
 
 		<div class="l-form form-style">
@@ -35,10 +29,15 @@
 				<input type="hidden" id="ques_no" name="ques_no" value="{{ ques_no }}">
 				<div class="form__div">
 					<input class="form__input" id="answer" type="text" name="answer" maxlength="100" required
-						placeholder="Enter your answer" autocomplete="off">
+						placeholder="Enter your answer" autocomplete="off" autofocus="on">
 				</div>
 			</form>
 		</div>
+	</div>
+	<div class="word-holder">
+		<img src="{% static 'images/wordSearch.png' %}" alt="">
+		<canvas id="canvas" width="600px" height="450px"></canvas>
+		<button onclick="erase()" title="erase"><i class="fas fa-eraser" title="erase"></i></button>
 	</div>
 </div>
 {% endblock content %}

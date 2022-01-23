@@ -7,13 +7,11 @@ from django.contrib.auth.models import User
 
 from django.utils import timezone
 
-
 # def landing(request):
 #     current_user = request.user
-
+#     print(current_user)
 #     if current_user.is_anonymous:
 #         return redirect('/accounts/login')
-
 #     return render(request, 'home.html')
 
 
@@ -73,8 +71,7 @@ def solve(request):
 
                     # score algo
                     max_points = riddle.correct_points
-                    curr_score = max(
-                        max_points//2, max_points - time_taken_mins*10)
+                    curr_score = max(max_points//2, max_points - time_taken_mins*10)
 
                     user_data.score += curr_score
                     user_data.ques_solved += 1
@@ -126,8 +123,7 @@ def solve(request):
         # check is user has already taken hint
         hintTaken = False
         try:
-            hint_data = HintData.objects.get(
-                user=current_user, ques=curr_riddle)
+            hint_data = HintData.objects.get(user=current_user, ques=curr_riddle)
             if(hint_data):
                 hintTaken = True
         except Exception as e:
