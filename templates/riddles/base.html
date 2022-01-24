@@ -83,10 +83,7 @@
 
     <footer class="footer">
         <div class="card">
-            <!-- <div class="container" onclick="shake()">
-                <h4><b>NEXT</b></h4>
-            </div> -->
-            <div class="container" onclick="window.location='/solve';">
+            <div class="container" onclick="submitForm();">
                 <h4><b>NEXT</b></h4>
             </div>
         </div>
@@ -123,6 +120,10 @@
     </div>
 
     <script>
+
+        const submitForm = () => {
+            document.getElementsByClassName("form")[0].submit()
+        }
         const initRiddle = () => {
             let isHintAvailable = '{{ hint_points }}'
 

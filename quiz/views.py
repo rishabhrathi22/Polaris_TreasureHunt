@@ -98,7 +98,8 @@ def solve(request):
             # return redirect('/solve')
 
         else:
-            return HttpResponse("Incorrect form data")
+            print("Incorrect form data")
+            return render(request, 'incorrect.html')
 
     # if a GET (or any other method) we'll create a blank form
     else:
