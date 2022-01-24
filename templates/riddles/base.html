@@ -21,7 +21,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aleo&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'css/riddle.css' %}">
     <link rel="stylesheet" href="{% static 'css/riddle2/riddle2.min.css' %}">
@@ -34,7 +34,7 @@
     <script src="{% static 'js/riddle2.js' %}" defer></script>
 </head>
 
-<body>
+<body style="user-select: none;" draggable="false">
 
     <!-- when page is opened in mobile -->
     <section id="mobile-screen">
@@ -54,14 +54,11 @@
                 </div>
             </div>
         </div>
-        <div class="heading">
-            <div>
-                <p> Treasure Hunt - Round {{ ques_no }} </p>
-            </div>
-        </div>
+        <p class="heading">
+            Treasure Hunt - Round {{ ques_no }}
+        </p>
         <div class="options">
-            <a href="https://docs.google.com/document/d/1-J5T7KUhG-z5WrTWe_H0xnub7jUtkR56w-j2MqOVSrg/edit?usp=sharing"
-                target="_blank">
+            <a href="https://bit.ly/Marvellous-Treasure-Hunt-Rules-PDF" target="_blank">
                 <button class="btn " id="myBtn"> RULES </button>
             </a>
 
@@ -82,12 +79,9 @@
     {% endblock content %}
 
     <footer class="footer">
-        <div class="card">
-            <!-- <div class="container" onclick="shake()">
-                <h4><b>NEXT</b></h4>
-            </div> -->
-            <div class="container" onclick="window.location='/solve';">
-                <h4><b>NEXT</b></h4>
+        <div class="card" onclick="window.location='#hintModal'">
+            <div class="container">
+                <a class="btn-modal" data-toggle="hintModal" href="#hintModal">HINT</a>
             </div>
         </div>
         <div class="card">
@@ -102,9 +96,9 @@
                 <p class="ftext">HINTS TAKEN</p>
             </div>
         </div>
-        <div class="card">
+        <div class="card" onclick="submitForm();">
             <div class="container">
-                <a class="btn-modal" data-toggle="hintModal" href="#hintModal">HINT</a>
+                <h4><b>NEXT</b></h4>
             </div>
         </div>
     </footer>
@@ -123,8 +117,13 @@
     </div>
 
     <script>
-        window.onload = () => {
+
+        const submitForm = () => {
+            document.getElementsByClassName("form")[0].submit()
+        }
+        const initRiddle = () => {
             let isHintAvailable = '{{ hint_points }}'
+
             if (parseInt(isHintAvailable) == 0) {
                 document.getElementById("hintArea").innerHTML = "No hint for this one..!"
             }
@@ -210,7 +209,9 @@
             // location.href = "#hintModal";
         }
         // Hint section ends
-
+        window.addEventListener ?
+            window.addEventListener("load", initRiddle, false)
+            : window.attachEvent && window.attachEvent("onload", initRiddle);
     </script>
 
 </body>

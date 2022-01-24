@@ -38,6 +38,18 @@ const drawCircle = (e) => {
     currX = e.clientX - canvas.offsetLeft;
     currY = e.clientY - canvas.offsetTop;
 
+    for (let i = 0; i < pointArray.length; i++) {
+        let t = radius / 3;
+        if (Math.abs(currX - pointArray[i][0]) <= t && Math.abs(currY - pointArray[i][1]) <= t) {
+            return;
+        }
+        if (currX == pointArray[i][0] && currY == pointArray[i][1]) {
+            return;
+        }
+    }
+
+    pointArray.push([currX, currY])
+
     // circle
     ctx.beginPath();
     ctx.arc(currX, currY, radius, 0, 2 * Math.PI);

@@ -6,28 +6,45 @@ from .forms import SubmitRiddleForm
 from django.contrib.auth.models import User
 
 from django.utils import timezone
+from datetime import datetime
+import pytz
 
-# def landing(request):
-#     current_user = request.user
-#     print(current_user)
-#     if current_user.is_anonymous:
-#         return redirect('/accounts/login')
-#     return render(request, 'home.html')
+
+def landing(request):
+    current_user = request.user
+    print(current_user)
+    if current_user.is_anonymous:
+        return redirect('/accounts/login')
+    return render(request, 'home.html')
 
 
 def home(request):
     current_user = request.user
+
+    IST = pytz.timezone('Asia/Kolkata')
+
+    targetDate = "2022-01-27 15:59:00"
+
+    # delete below line in produciton
+    targetDate = "2022-01-22 15:59:00"
+
+    eventTime = datetime.fromisoformat(targetDate)
+    eventTime = IST.localize(eventTime)
+    curr = datetime.now(IST)
+
+    if(curr < eventTime):
+        return redirect("https://gdsc-treasure-hunt.netlify.app")
 
     # user not logged in
     if current_user.is_anonymous:
         return redirect('/accounts/login')
 
     try:
-    	user_data = UserData.objects.get(user = current_user)
+        user_data = UserData.objects.get(user=current_user)
     except Exception as e:
-    	print(e)
-    	user_data = UserData.objects.create(user = current_user)
-    	user_data.save()
+        print(e)
+        user_data = UserData.objects.create(user=current_user)
+        user_data.save()
 
     return render(request, 'index.html')
 
@@ -51,8 +68,8 @@ def solve(request):
             # check answer
             try:
                 riddle = Riddle.objects.get(ques_no=data['ques_no'])
-                user_ans = data['answer'].lower()
-                correct_ans = riddle.answer.lower()
+                user_ans = data['answer'].strip().lower()
+                correct_ans = riddle.answer.strip().lower()
 
                 user_data = UserData.objects.get(user=current_user)
 
@@ -71,7 +88,8 @@ def solve(request):
 
                     # score algo
                     max_points = riddle.correct_points
-                    curr_score = max(max_points//2, max_points - time_taken_mins*10)
+                    curr_score = max(
+                        max_points//2, max_points - time_taken_mins*10)
 
                     user_data.score += curr_score
                     user_data.ques_solved += 1
@@ -89,7 +107,8 @@ def solve(request):
             # return redirect('/solve')
 
         else:
-            return HttpResponse("Incorrect form data")
+            print("Incorrect form data")
+            return render(request, 'incorrect.html')
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -123,7 +142,8 @@ def solve(request):
         # check is user has already taken hint
         hintTaken = False
         try:
-            hint_data = HintData.objects.get(user=current_user, ques=curr_riddle)
+            hint_data = HintData.objects.get(
+                user=current_user, ques=curr_riddle)
             if(hint_data):
                 hintTaken = True
         except Exception as e:
