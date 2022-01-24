@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class UserData(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    score = models.IntegerField(default = 0)
+    score = models.IntegerField(default = 50)
     hints_taken = models.IntegerField(default = 0)
     ques_solved = models.IntegerField(default = 0)
 
