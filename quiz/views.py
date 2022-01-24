@@ -10,24 +10,11 @@ from datetime import datetime
 import pytz
 
 
-def landing(request):
-    current_user = request.user
-    print(current_user)
-    if current_user.is_anonymous:
-        return redirect('/accounts/login')
-    return render(request, 'home.html')
-
-
 def home(request):
     current_user = request.user
 
     IST = pytz.timezone('Asia/Kolkata')
-
     targetDate = "2022-01-27 15:59:00"
-
-    # delete below line in produciton
-    targetDate = "2022-01-22 15:59:00"
-
     eventTime = datetime.fromisoformat(targetDate)
     eventTime = IST.localize(eventTime)
     curr = datetime.now(IST)
@@ -103,9 +90,6 @@ def solve(request):
                 print(e)
                 return HttpResponse("Riddle not found")
 
-            # redirect to a new URL:
-            # return redirect('/solve')
-
         else:
             print("Incorrect form data")
             return render(request, 'incorrect.html')
@@ -116,8 +100,6 @@ def solve(request):
         try:
             user_data = UserData.objects.get(user=current_user)
             last_ques = user_data.ques_solved
-            # history = History.objects.filter(user = current_user, end_time__isnull = False)
-            # last_ques = history.last().ques.ques_no
         except Exception as e:
             print(e)
             last_ques = 0
