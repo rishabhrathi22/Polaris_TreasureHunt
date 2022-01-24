@@ -214,7 +214,7 @@ nav {
   width: 400px;
   position: absolute;
   top: 75%;
-  right: -10%;
+  left: 20%;
   transform: translate(-50%, -50%);
   padding: 2em;
   background: black;
