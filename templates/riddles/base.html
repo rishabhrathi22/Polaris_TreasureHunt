@@ -123,8 +123,9 @@
     </div>
 
     <script>
-        window.onload = () => {
+        const initRiddle = () => {
             let isHintAvailable = '{{ hint_points }}'
+
             if (parseInt(isHintAvailable) == 0) {
                 document.getElementById("hintArea").innerHTML = "No hint for this one..!"
             }
@@ -210,7 +211,9 @@
             // location.href = "#hintModal";
         }
         // Hint section ends
-
+        window.addEventListener ?
+            window.addEventListener("load", initRiddle, false)
+            : window.attachEvent && window.attachEvent("onload", initRiddle);
     </script>
 
 </body>
