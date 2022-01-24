@@ -6,6 +6,8 @@ from .forms import SubmitRiddleForm
 from django.contrib.auth.models import User
 
 from django.utils import timezone
+from datetime import datetime
+import pytz
 
 
 def landing(request):
@@ -18,6 +20,17 @@ def landing(request):
 
 def home(request):
     current_user = request.user
+
+    IST = pytz.timezone('Asia/Kolkata')
+
+    targetDate = "2022-01-27 15:59:00"
+
+    eventTime = datetime.fromisoformat(targetDate)
+    eventTime = IST.localize(eventTime)
+    curr = datetime.now(IST)
+
+    if(curr < eventTime):
+        return redirect("https://gdsc-treasure-hunt.netlify.app")
 
     # user not logged in
     if current_user.is_anonymous:
