@@ -1,44 +1,44 @@
 * {
-    cursor: url(./../static/images/cursor.png) 2 2, auto;
-    margin: 0;
-    padding: 0;
+  cursor: url("./../static/images/cursor.png") 2 2, auto;
+  margin: 0;
+  padding: 0;
 }
 
 body::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 body {
-    background-color: black;
+  background-color: black;
 }
 
 img {
-    width: 100%;
-    object-fit: cover;
+  width: 100%;
+  object-fit: cover;
 }
 
 .btn-set {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 150px;
-    align-items: center;
-    margin-top: -60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 150px;
+  align-items: center;
+  margin-top: -60px;
 
-    a {
-        text-decoration: none;
-        border: none;
-        cursor: pointer;
-        width: auto;
+  a {
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: auto;
+  }
+
+  img {
+    cursor: pointer;
+
+    &:active {
+      transform: scale(0.9);
     }
 
-    img {
-        cursor: pointer;
-
-        &:active {
-            transform: scale(.9);
-        }
-
-        width: 400px;
-    }
+    width: 400px;
+  }
 }
