@@ -25,6 +25,9 @@ def home(request):
 
     targetDate = "2022-01-27 15:59:00"
 
+    # delete below line in produciton
+    targetDate = "2022-01-22 15:59:00"
+
     eventTime = datetime.fromisoformat(targetDate)
     eventTime = IST.localize(eventTime)
     curr = datetime.now(IST)
