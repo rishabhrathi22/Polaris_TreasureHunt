@@ -9,7 +9,6 @@ class UserData(models.Model):
 
 class Riddle(models.Model):
     ques_no = models.IntegerField()
-    # riddle = models.CharField(max_length = 10000)
     answer = models.CharField(max_length = 1000)
     hint = models.CharField(max_length = 1000)
     correct_points = models.IntegerField()
