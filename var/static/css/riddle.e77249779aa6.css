@@ -1,0 +1,627 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url("/static/fonts/avenger.6cf5fc945fa8.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: avengerence;
+  src: url("/static/fonts/AvengeanceMightiestAvenger-837g.5cd6df665ff2.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: marvelFont;
+  src: url("/static/fonts/MarvelRegular.067285b0c7e9.ttf") format("truetype");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  color: white;
+  cursor: url("/static/images/cursor.639ce1076d0e.png") 2 2, auto;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/static/images/gameui.3b79c230d6ab.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: #9e64eb; */
+  height: 15vh;
+  color: white;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.options {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  align-items: center;
+  font-family: myFirstFont;
+  width: 50vw;
+  margin-right: -2rem;
+}
+
+@media screen and (max-width:1400px) {
+  #myBtn {
+    position: absolute;
+    left: 182px;
+    top: 28px;
+
+  }
+}
+
+.btn {
+  background-color: #ff0815;
+  padding: 10px;
+  margin: 10px;
+  margin-right: 20px;
+  font-weight: 800;
+  min-width: 0px;
+  color: white;
+  border-radius: 6px;
+  border: #ff0815;
+  /* transition: .5s; */
+  font-family: myFirstFont;
+  letter-spacing: 3px;
+}
+
+.btn:hover {
+  border: 2px solid white;
+  color: #ff0815;
+  background-color: transparent;
+  transition: 0.5s;
+}
+
+.btn1 {
+  background-color: transparent;
+  padding: 10px;
+  margin: 10px;
+  font-weight: 800;
+  min-width: 80px;
+  color: white;
+  border: 2px solid #ff0815;
+  border-radius: 6px;
+  transition: 0.5s;
+  font-family: myFirstFont;
+  letter-spacing: 0.5px;
+}
+
+.btn1:hover {
+  border: 2px solid white;
+  color: #ff0815;
+  text-shadow: 0 0 5px rgb(235, 159, 159);
+  background-color: white;
+}
+
+.teamDetails {
+  display: flex;
+  align-items: center;
+  font-family: avengerence;
+}
+
+.heading {
+  position: absolute;
+  top: 4.5vh;
+  left: 0;
+  width: 100vw;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  font-family: myFirstFont;
+}
+
+.teamAvatar img {
+  height: 40px;
+  width: 40px;
+  margin: 0 2vh 0 8vh;
+  border-radius: 50%;
+  box-shadow: 1px 1px 10px 0.5px rgb(216, 146, 146);
+}
+
+.time {
+  font-weight: 200;
+  font-size: 20px;
+  /* margin-top: 40px; */
+  margin-left: -20px;
+  margin-right: 40px;
+  margin-top: 20px;
+  width: 9vw;
+  line-height: 4vh;
+  text-align: center;
+  text-shadow: 0 0 5px #fff;
+}
+
+.small {
+  font-size: 12px;
+  margin-top: -8px;
+}
+
+.riddle {
+  height: 95vh;
+  width: 40vw;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Aleo', serif;
+  margin-left: 55px;
+}
+
+.riddleQuestion1>p {
+  padding: 15px;
+  line-height: 1.5rem;
+  letter-spacing: 2px;
+}
+
+.riddleQuestion1 {
+  height: auto;
+  align-self: baseline;
+  overflow: scroll;
+  overflow: hidden;
+}
+
+.gameDetails {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+/* MOdal --------------- */
+
+.modal-window {
+  position: fixed;
+  /* background-color: rgba(255, 255, 255, 0.25); */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  color: wheat;
+  font-family: avengerence;
+}
+
+.modal-window:target {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-window>div {
+  width: 400px;
+  position: absolute;
+  top: 75%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  padding: 2em;
+  background: black;
+}
+
+.modal-window header {
+  font-weight: bold;
+}
+
+.modal-window h1 {
+  font-size: 150%;
+  margin: 0 0 15px;
+}
+
+.modal-close {
+  color: red;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 70px;
+  text-decoration: none;
+  font-family: avengerence;
+}
+
+.modal-close:hover {
+  color: rgba(247, 2, 2, 0.671);
+}
+
+a {
+  color: inherit;
+}
+
+.modal-window>div {
+  border-radius: 1rem;
+}
+
+.modal-window div:not(:last-of-type) {
+  margin-bottom: 15px;
+}
+
+small {
+  color: violet;
+}
+
+.btn-modal {
+  text-decoration: none;
+}
+
+.btn i {
+  padding-right: 0.3em;
+}
+
+.confirm-btn {
+  background-color: white;
+  border: 0.5px solid white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-top: 8px;
+  color: black;
+  font-family: avengerence;
+}
+
+.confirm-btn:hover {
+  color: #ff0815;
+}
+
+/* ScrollBar */
+
+.riddleQuestion::-webkit-scrollbar-track {
+  --webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: transparent;
+  /* background-color: #f5f5f5; */
+  border-radius: 10px;
+}
+
+.riddleQuestion::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+  /* background-color: #f5f5f5; */
+}
+
+.riddleQuestion::-webkit-scrollbar-thumb {
+  background-color: #3366ff;
+  border-radius: 10px;
+  background-image: -webkit-linear-gradient(0deg,
+      rgba(255, 255, 255, 0.5) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0.5) 75%,
+      transparent 75%,
+      transparent);
+}
+
+.riddleQuestion::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+.force-overflow {
+  min-height: 450px;
+}
+
+/*===== FORM =====*/
+
+/*
+.l-form {
+   display: flex;
+ justify-content: center;
+    align-items: center;
+ height: 100vh;
+}*/
+
+.form {
+  width: 360px;
+  padding: 1rem 2rem;
+  /* box-shadow: 0 10px 25px rgba(92, 99, 105, .2); */
+}
+
+.form__title {
+  font-weight: 400;
+  margin-bottom: 3rem;
+}
+
+.form__div {
+  position: relative;
+  height: 25px;
+  margin-bottom: 1.5rem;
+}
+
+.animation {
+  animation: shake 0.8s ease-in;
+}
+
+.form__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  border: 1px solid #dadce0;
+  border-radius: 0.5rem;
+  outline: none;
+  padding: 1rem;
+  background: none;
+  z-index: 1;
+}
+
+.form__label {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  padding: 0 0.25rem;
+  /* background-color: #fff; */
+  color: #80868b;
+  font-size: 5rem;
+  transition: 0.3s;
+}
+
+/*Input focus move up label*/
+
+.form__input:focus+.form__label {
+  top: -.5rem;
+  left: .8rem;
+  color: white;
+  font-size: .75rem;
+  font-weight: 500;
+  z-index: 10;
+  font-family: myFirstFont;
+}
+
+/*Input focus sticky top label*/
+
+.form__input:not(:placeholder-shown).form__input:not(:focus)+.form__label {
+  top: 0.5rem;
+  left: 0.8rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  z-index: 0;
+  font-family: myFirstFont;
+}
+
+/*Input focus*/
+
+.form__input:focus {
+  border: 1.5px solid white;
+  /* font-family: myFirstFont; */
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translate(0.8rem);
+    box-shadow: 0px 5px 20px rgb(255, 0, 0);
+    border-radius: 0.5rem;
+  }
+
+  10%,
+  30%,
+  50% {
+    transform: translate(-0.2rem);
+  }
+
+  70%,
+  100% {
+    transform: translate(0);
+  }
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background: rgb(34, 75, 195);
+  background: linear-gradient(0deg,
+      rgba(34, 75, 195, 0.3) 0%,
+      rgba(162, 8, 15, 0.1) 100%);
+  color: white;
+  text-align: center;
+  font-family: myFirstFont;
+  font-weight: 400;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 22%;
+  height: 70px;
+  font-size: 30px;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.1) 50%, #a2080f 50%) right;
+  background-size: 200%;
+  transition: 0.5s ease-in;
+  padding-bottom: 10px;
+  /* backdrop-filter: blur(3px); */
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  color: #333 !important;
+  background-position: left;
+  cursor: pointer;
+  text-shadow: 0 0 5px #fff;
+}
+
+.container {
+  padding: 10px 16px;
+}
+
+.ftext {
+  font-size: 15px;
+  font-weight: 300;
+  margin-top: -4px;
+}
+
+.image {
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  mix-blend-mode: lighten;
+  transition: 0.3s ease-in-out;
+}
+
+.img-round1 {
+  right: 20%;
+}
+
+.crossword img {
+  height: 18rem;
+  margin-top: 5rem;
+}
+
+.round3-clue {
+  position: absolute;
+  top: 15%;
+  right: 65px;
+  max-width: 550px;
+}
+
+.round3-clue li {
+  font-family: 'Aleo', serif;
+  font-size: large;
+  margin-bottom: 10px;
+}
+
+.riddleQuestion4 {
+  padding-left: 40px;
+  margin-top: -40px;
+}
+
+.riddleQuestion4 p {
+  font-family: 'Aleo', serif;
+  font-size: large;
+}
+
+.riddleQuestion4 ol {
+  margin-bottom: 10px;
+}
+
+.img-round4:hover {
+  transform: scale(1.01);
+  transition: 0.3s ease-in-out;
+}
+
+.question6 {
+  margin-top: -40px;
+  margin-left: -20px;
+}
+
+.riddleQuestion5 {
+  padding-left: 100px;
+  margin-top: -60px;
+}
+
+.part {
+  margin-left: 50px;
+}
+
+.img-round6 img {
+  height: 80vh;
+  margin-right: -6rem;
+}
+
+.img-round7 img {
+  height: 90vh;
+  margin-top: -3rem;
+  margin-right: -2rem;
+}
+
+.img-round4:hover {
+  transform: scale(1.01);
+  transition: 0.3s ease-in-out;
+}
+
+.image8 {
+  position: absolute;
+  top: 20%;
+  right: 5%;
+  mix-blend-mode: lighten;
+  transition: 0.3s ease-in-out;
+}
+
+.img-round8 img {
+  position: absolute;
+  height: 30rem;
+  width: 40rem;
+  right: -65px;
+}
+
+.riddle5 {
+  margin-left: 50px;
+  font-size: 17px;
+}
+
+.riddle5 {
+  margin-left: 50px;
+}
+
+.riddle5 span {
+  font-size: 20px;
+  font-family: 'Aleo', serif;
+}
+
+.riddle h2,
+.riddle h1,
+.round3-clue h2 {
+  font-family: myFirstFont;
+  margin: 10px 0;
+}
+
+.riddle p,
+.riddle ol,
+.round3-clue ol {
+  padding-left: 30px;
+  font-size: large;
+}
+
+.round3-clue ol {
+  padding-left: 50px;
+}
+
+.riddle ol {
+  padding-left: 50px;
+}
+
+
+.riddleQuestion1,
+.riddleQuestion2 {
+  padding-left: 30px;
+  font-size: large;
+}
+
+.riddle input {
+  cursor: text;
+  margin-top: 10px;
+  font-size: large;
+}
+
+.riddleQuestion5 h2 {
+  margin-left: -25px;
+}
+
+.question7 {
+  margin-top: 0px;
+}

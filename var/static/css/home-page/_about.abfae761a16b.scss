@@ -1,0 +1,66 @@
+.aboutSection {
+    width: 100%;
+    height: auto;
+    background: #ED213A;
+    background: linear-gradient(to right, #93291E, #ED213A);
+    background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5), rgba(255, 0, 0, 0.5), rgba(255, 0, 0, 1));
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    z-index: 1;
+    padding: 40px 0;
+    color: white;
+}
+
+.spider-img img {
+    position: absolute;
+    right: 0;
+    top: 72%;
+    z-index: -1;
+}
+
+.widow-img img {
+    position: absolute;
+    /* right: 5%; */
+    top: 127%;
+    height: 20rem;
+}
+
+.thor-img img {
+    position: absolute;
+    right: -10%;
+    height: 30rem;
+    top: 120%;
+    transform: scale(.5);
+}
+
+.aboutContainer {
+    width: 80vw;
+    left: 10%;
+    top: 20%;
+    margin: auto;
+    font-family: sans-serif;
+}
+
+.heading {
+    font-size: 3rem;
+    text-align: center;
+    font-family: marvel;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    z-index: 2;
+}
+
+.aboutContent {
+    width: 80vw;
+    line-height: 24px;
+    font-size: 0.9rem;
+    margin: auto;
+    text-align: justify;
+    z-index: 20;
+    padding: 20px;
+    z-index: 2;
+
+    p {
+        font-family: 'Montserrat', sans-serif;
+    }
+}

@@ -9,7 +9,7 @@
 
     <meta property="og:title" content="GDSC Treasure Hunt">
     <meta property="og:description" content="desc">
-    <meta property="og:image" content="./images/logo.svg">
+
     <meta property="og:url" content="name.com">
 
     <!-- Main Link Tags  -->
@@ -59,11 +59,11 @@
         </p>
         <div class="options">
             <a href="https://bit.ly/Marvellous-Treasure-Hunt-Rules-PDF" target="_blank">
-                <button class="btn " id="myBtn"> RULES </button>
+                <button class="btn" id="myBtn"> RULES </button>
             </a>
 
             <a href="/leaderboard" target="_blank">
-                <button class="btn1 " id="myBtn2"> LEADERBOARD </button>
+                <button class="btn1" id="myBtn2"> LEADERBOARD </button>
             </a>
             <div class="time">
                 <!-- <span>03:56</span> -->
@@ -121,6 +121,7 @@
         const submitForm = () => {
             document.getElementsByClassName("form")[0].submit()
         }
+
         const initRiddle = () => {
             let isHintAvailable = '{{ hint_points }}'
 
@@ -129,11 +130,11 @@
             }
 
             let isHintTaken = '{{ isHintTaken }}'
-            // console.log(isHintTaken)
             if (isHintTaken === 'True') {
                 getHint();
             }
         }
+
         // Timer starts
         let temp = '{{ start_time }}'
 
@@ -206,12 +207,10 @@
 
             xhttp.open("GET", "/hint?ques={{ ques_no }}", true);
             xhttp.send();
-            // location.href = "#hintModal";
         }
         // Hint section ends
-        window.addEventListener ?
-            window.addEventListener("load", initRiddle, false)
-            : window.attachEvent && window.attachEvent("onload", initRiddle);
+
+        window.addEventListener ? window.addEventListener("load", initRiddle, false) : window.attachEvent && window.attachEvent("onload", initRiddle);
     </script>
 
 </body>

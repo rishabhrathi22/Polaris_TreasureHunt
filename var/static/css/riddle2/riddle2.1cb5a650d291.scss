@@ -1,0 +1,37 @@
+.word-holder {
+
+    img,
+    canvas {
+        width: 600px;
+        z-index: 10;
+        position: fixed;
+        right: 85px;
+        top: 22%;
+        cursor: pointer;
+    }
+
+    button {
+        background: #ed1d24;
+        padding: 10px;
+        border: none;
+        border-radius: 50%;
+        position: absolute;
+        right: 700px;
+        top: 22%;
+
+        i {
+            font-size: large;
+        }
+    }
+
+    button,
+    i {
+        &:hover {
+            transform: scale(.9);
+        }
+
+        &:active {
+            transform: scale(1.1);
+        }
+    }
+}

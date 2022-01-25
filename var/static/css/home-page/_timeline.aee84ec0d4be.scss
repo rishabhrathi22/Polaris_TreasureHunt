@@ -1,0 +1,265 @@
+.timeline-section {
+    background-color: black;
+    min-height: 100vh;
+    padding: 15px;
+    font-family: 'Montserrat', sans-serif;
+
+    h2 {
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font-size: 2.5rem;
+        margin-bottom: 100px;
+        font-family: marvel;
+    }
+}
+
+.timeline-items {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.timeline-items::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: #2f363e;
+    left: calc(50% - 1px);
+}
+
+.timeline-item {
+    margin-bottom: 40px;
+    width: 100%;
+    position: relative;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-item:nth-child(odd) {
+    padding-right: calc(50% + 30px);
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    padding-left: calc(50% + 30px);
+}
+
+.timeline-dot {
+    height: 16px;
+    width: 16px;
+    background-color: #eaa023;
+    position: absolute;
+    left: calc(50% - 8px);
+    border-radius: 50%;
+    top: 10px;
+}
+
+.timeline-date {
+    font-size: 18px;
+    color: #eaa023;
+    margin: 6px 0 15px;
+}
+
+.timeline-content {
+    background-color: #2f363e;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.timeline-content h3 {
+    font-size: 20px;
+    color: #ffffff;
+    margin: 0 0 10px;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.timeline-content p {
+    color: hsl(0, 0%, 78%);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 22px;
+}
+
+/* responsive */
+@media(max-width: 767px) {
+    .timeline-items::before {
+        left: 7px;
+    }
+
+    .timeline-item:nth-child(odd) {
+        padding-right: 0;
+        text-align: left;
+    }
+
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        padding-left: 37px;
+    }
+
+    .timeline-dot {
+        left: 0;
+    }
+}
+
+
+.card {
+    width: 420px;
+    height: 380px;
+    position: relative;
+    margin: 20px;
+    padding: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 25px;
+    transition: 1s;
+}
+
+#card1 {
+    background: linear-gradient(135deg, #411616, #2b374b);
+}
+
+#card2 {
+    background: linear-gradient(135deg, #a87b23, #640109);
+}
+
+#card3 {
+    background: linear-gradient(135deg, rgb(203, 28, 47), rgb(33, 46, 55));
+}
+
+#card4 {
+    background: linear-gradient(135deg, rgb(24, 32, 51), rgb(127, 19, 22));
+}
+
+#card5 {
+    background: linear-gradient(135deg, rgb(30, 99, 142), rgb(177, 32, 42));
+}
+
+#card6 {
+    background: linear-gradient(135deg, rgb(52, 56, 37), rgb(26, 26, 29));
+}
+
+#img1 {
+    position: absolute;
+    width: auto;
+    height: 400px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 1s;
+}
+
+#img2 {
+    position: absolute;
+    width: auto;
+    height: 400px;
+    bottom: 0;
+    left: 50%;
+    opacity: 0;
+    transform: translateX(-50%);
+    transition: 1s;
+}
+
+.card:hover #img1 {
+    opacity: 0;
+    height: 600px;
+    left: 80%;
+    transition: 1s;
+}
+
+.card:hover #img2 {
+    opacity: 100%;
+    height: 600px;
+    left: 80%;
+    transition: 1s;
+}
+
+.content {
+    color: #fff;
+    width: 400px;
+    z-index: 2;
+    text-transform: capitalize;
+
+    p {
+        opacity: 0;
+        font-size: large;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    h2 {
+        font-size: 2.5em;
+        transform: translateY(150px);
+        text-transform: uppercase;
+    }
+
+    p,
+    h2 {
+        transition-duration: 500ms;
+    }
+
+    &:hover p {
+        opacity: 1;
+    }
+
+    &:hover h2 {
+        transform: translate(0, 0);
+    }
+}
+
+@media (max-width: 681px) {
+    .card {
+        position: relative;
+        max-width: 600px;
+        display: block;
+    }
+
+    .card:hover {
+        height: 620px;
+    }
+
+    .card:hover #img1 {
+        opacity: 0;
+        height: 400px;
+        left: 50%;
+        transition: 1s;
+    }
+
+    .card:hover #img2 {
+        opacity: 100%;
+        height: 400px;
+        left: 50%;
+        transition: 1s;
+    }
+
+    .card:hover .content {
+        top: 10px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 431px) {
+    .card:hover {
+        height: 660px;
+    }
+}
+
+@media (max-width: 352px) {
+    .card:hover {
+        height: 800px;
+    }
+
+    button:nth-child(6) {
+        margin-bottom: 60px;
+    }
+}
+
+.timeline-section p {
+    margin-top: -30px;
+}

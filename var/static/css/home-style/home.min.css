@@ -1,0 +1,48 @@
+* {
+  cursor: url("/static/images/cursor.png") 2 2, auto;
+  margin: 0;
+  padding: 0;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+body {
+  background-color: black;
+}
+img {
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.btn-set {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  gap: 150px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-top: -60px;
+}
+.btn-set a {
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  width: auto;
+}
+.btn-set img {
+  cursor: pointer;
+  width: 400px;
+}
+.btn-set img:active {
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+}
+/*# sourceMappingURL=home.min.css.map */
