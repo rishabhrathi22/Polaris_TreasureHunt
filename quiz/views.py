@@ -54,16 +54,18 @@ def solve(request):
 
             # check answer
             try:
-                riddle = Riddle.objects.get(ques_no=data['ques_no'])
+                riddle = Riddle.objects.get(ques_no = data['ques_no'])
                 user_ans = data['answer'].strip().lower()
                 correct_ans = riddle.answer.strip().lower()
-
-                user_data = UserData.objects.get(user=current_user)
+                user_data = UserData.objects.get(user = current_user)
 
                 if(user_data.ques_solved + 1 != data['ques_no']):
+                    print("Not matching")
                     return redirect('/solve')
 
                 if (user_ans == correct_ans):
+                    print("Correct ans")
+
                     # update the end time for ques
                     hist = History.objects.get(user=current_user, ques=riddle)
                     hist.end_time = timezone.now()
@@ -86,8 +88,8 @@ def solve(request):
                         "num": user_data.ques_solved
                     }
                     return render(request, 'riddleStory.html', context)
-                    # return render(request, 'correct.html')
                 else:
+                    print("Incorrect ans")
                     return render(request, 'incorrect.html')
 
             except Exception as e:

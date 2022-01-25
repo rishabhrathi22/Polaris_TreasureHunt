@@ -20,7 +20,6 @@
     <title> Correct | Home Page | GDSC RCOEM</title>
 
     <link rel="stylesheet" href="{% static 'css/buffer-style/buffer.min.css' %}">
-
     <link rel="stylesheet" href="{% static 'css/mobile-view/mobile.min.css' %}">
 </head>
 
@@ -38,18 +37,18 @@
         </p>
     </section>
 
-    <img src="{% static 'images/r1.png' %}" alt="story" id="story">
+    <img src="" alt="story" id="story">
 
-    <a href="/solve" style="max-width: 140px;" class="correct">
+    <a href="/solve/" style="max-width: 140px;" class="correct">
         <button style="color: #0165b0;">next</button>
     </a>
 
-    <script>
-        let imageNum = '{{ num }}'
-        window.onload = () => {
-            document.getElementById("story").src = `{% static 'images/r${imageNum}.png' %}`
-        }
-    </script>
 </body>
+
+<script>
+    const riddleNum = "{{ num }}";
+    const imgFile = `{% static 'images/r` + riddleNum + `.png' %}`;
+    document.getElementById("story").src = imgFile;
+</script>
 
 </html>
