@@ -20,7 +20,7 @@ def home(request):
     # curr = datetime.now(IST)
 
     # if(curr < eventTime):
-        # return redirect("https://gdsc-treasure-hunt.netlify.app")
+    # return redirect("https://gdsc-treasure-hunt.netlify.app")
 
     # user not logged in
     if current_user.is_anonymous:
@@ -82,7 +82,11 @@ def solve(request):
                     user_data.ques_solved += 1
                     user_data.save()
 
-                    return render(request, 'correct.html')
+                    context = {
+                        "num": user_data.ques_solved
+                    }
+                    return render(request, 'riddleStory.html', context)
+                    # return render(request, 'correct.html')
                 else:
                     return render(request, 'incorrect.html')
 

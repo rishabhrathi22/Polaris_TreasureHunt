@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="GDSC Treasure Hunt">
+    <meta property="og:description" content="desc">
+    <meta property="og:image" content="./images/logo.svg">
+    <meta property="og:url" content="name.com">
+
+    <!-- Main Link Tags  -->
+    <link href="{% static 'images/logo.svg' %}" rel="icon" type="image/png" sizes="16x16">
+    <link href="{% static 'images/logo.svg' %}" rel="icon" type="image/png" sizes="32x32">
+
+    <title> Correct | Home Page | GDSC RCOEM</title>
+
+    <link rel="stylesheet" href="{% static 'css/buffer-style/buffer.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/mobile-view/mobile.min.css' %}">
+</head>
+
+<body draggable="false">
+    <style>
+        body {
+            background-color: black;
+            padding: 50px 0;
+            padding-bottom: 140px;
+        }
+    </style>
+    <section id="mobile-screen">
+        <p>
+            Please view this page on a laptop/Desktop!!
+        </p>
+    </section>
+
+    <img src="{% static 'images/r1.png' %}" alt="story" id="story">
+
+    <a href="/solve" style="max-width: 140px;" class="correct">
+        <button style="color: #0165b0;">next</button>
+    </a>
+
+    <script>
+        let imageNum = '{{ num }}'
+        window.onload = () => {
+            document.getElementById("story").src = `{% static 'images/r${imageNum}.png' %}`
+        }
+    </script>
+</body>
+
+</html>
