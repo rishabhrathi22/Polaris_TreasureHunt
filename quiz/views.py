@@ -123,13 +123,12 @@ def solve(request):
             hist.save()
         except Exception as e:
             print(e)
-            hist = History.objects.get(user=current_user, ques=curr_riddle)
+            hist = History.objects.get(user = current_user, ques = curr_riddle)
 
         # check is user has already taken hint
         hintTaken = False
         try:
-            hint_data = HintData.objects.get(
-                user=current_user, ques=curr_riddle)
+            hint_data = HintData.objects.get(user = current_user, ques = curr_riddle)
             if(hint_data):
                 hintTaken = True
         except Exception as e:
@@ -167,7 +166,7 @@ def leaderboard(request):
         for user in all_users:
             data.append({
                 "rank": rank,
-                "user": user.user.username,
+                "user": user.user.first_name + " " + user.user.last_name,
                 "ques_solved": user.ques_solved,
                 "score": user.score,
                 "hints_taken": user.hints_taken,
