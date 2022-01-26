@@ -21,8 +21,8 @@ def home(request):
 
     print(curr, eventTime)
 
-    # if(curr < eventTime):
-        # return render(request, 'countdown.html')
+    if(curr < eventTime):
+        return render(request, 'countdown.html')
         # return redirect("https://gdsc-treasure-hunt.netlify.app")
 
     # user not logged in
