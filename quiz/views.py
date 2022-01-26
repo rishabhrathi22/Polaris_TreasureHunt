@@ -19,8 +19,8 @@ def home(request):
     eventTime = IST.localize(eventTime)
     curr = datetime.now(IST)
 
-    # if(curr < eventTime):
-    #     return redirect("https://gdsc-treasure-hunt.netlify.app")
+    if(curr < eventTime):
+        return redirect("https://gdsc-treasure-hunt.netlify.app")
 
     # user not logged in
     if current_user.is_anonymous:
