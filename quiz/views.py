@@ -13,14 +13,14 @@ import pytz
 def home(request):
     current_user = request.user
 
-    # IST = pytz.timezone('Asia/Kolkata')
-    # targetDate = "2022-01-27 15:59:59"
-    # eventTime = datetime.fromisoformat(targetDate)
-    # eventTime = IST.localize(eventTime)
-    # curr = datetime.now(IST)
+    IST = pytz.timezone('Asia/Kolkata')
+    targetDate = "2022-01-27 15:59:59"
+    eventTime = datetime.fromisoformat(targetDate)
+    eventTime = IST.localize(eventTime)
+    curr = datetime.now(IST)
 
-    # if(curr < eventTime):
-    # return redirect("https://gdsc-treasure-hunt.netlify.app")
+    if(curr < eventTime):
+        return redirect("https://gdsc-treasure-hunt.netlify.app")
 
     # user not logged in
     if current_user.is_anonymous:
