@@ -904,3 +904,4 @@
 [26/Jan/2022 13:38:47] INFO [django.server:179] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
 [26/Jan/2022 13:38:47] INFO [django.server:179] "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 304 0
 [26/Jan/2022 13:38:47] INFO [django.server:179] "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+[26/Jan/2022 13:41:22] INFO [django.utils.autoreload:643] Watching for file changes with StatReloader
