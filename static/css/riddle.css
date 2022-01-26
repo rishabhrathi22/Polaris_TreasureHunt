@@ -5,7 +5,8 @@
 
 @font-face {
   font-family: avengerence;
-  src: url("/static/fonts/AvengeanceMightiestAvenger-837g.ttf") format("truetype");
+  src: url("/static/fonts/AvengeanceMightiestAvenger-837g.ttf")
+    format("truetype");
 }
 
 @font-face {
@@ -50,14 +51,14 @@ nav {
   font-family: myFirstFont;
   width: 50vw;
   margin-right: -2rem;
+  z-index: 100;
 }
 
-@media screen and (max-width:1400px) {
+@media screen and (max-width: 1400px) {
   #myBtn {
     position: absolute;
     left: 182px;
     top: 28px;
-
   }
 }
 
@@ -155,11 +156,11 @@ nav {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  font-family: 'Aleo', serif;
+  font-family: "Aleo", serif;
   margin-left: 55px;
 }
 
-.riddleQuestion1>p {
+.riddleQuestion1 > p {
   padding: 15px;
   line-height: 1.5rem;
   letter-spacing: 2px;
@@ -202,7 +203,7 @@ nav {
   pointer-events: auto;
 }
 
-.modal-window>div {
+.modal-window > div {
   width: 400px;
   position: absolute;
   top: 75%;
@@ -242,7 +243,7 @@ a {
   color: inherit;
 }
 
-.modal-window>div {
+.modal-window > div {
   border-radius: 1rem;
 }
 
@@ -294,14 +295,16 @@ small {
 .riddleQuestion::-webkit-scrollbar-thumb {
   background-color: #3366ff;
   border-radius: 10px;
-  background-image: -webkit-linear-gradient(0deg,
-      rgba(255, 255, 255, 0.5) 25%,
-      transparent 25%,
-      transparent 50%,
-      rgba(255, 255, 255, 0.5) 50%,
-      rgba(255, 255, 255, 0.5) 75%,
-      transparent 75%,
-      transparent);
+  background-image: -webkit-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.5) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.5) 75%,
+    transparent 75%,
+    transparent
+  );
 }
 
 .riddleQuestion::-webkit-scrollbar-corner {
@@ -371,11 +374,11 @@ small {
 
 /*Input focus move up label*/
 
-.form__input:focus+.form__label {
-  top: -.5rem;
-  left: .8rem;
+.form__input:focus + .form__label {
+  top: -0.5rem;
+  left: 0.8rem;
   color: white;
-  font-size: .75rem;
+  font-size: 0.75rem;
   font-weight: 500;
   z-index: 10;
   font-family: myFirstFont;
@@ -383,7 +386,7 @@ small {
 
 /*Input focus sticky top label*/
 
-.form__input:not(:placeholder-shown).form__input:not(:focus)+.form__label {
+.form__input:not(:placeholder-shown).form__input:not(:focus) + .form__label {
   top: 0.5rem;
   left: 0.8rem;
   font-size: 1.5rem;
@@ -435,9 +438,11 @@ small {
   align-items: center;
   flex-wrap: wrap;
   background: rgb(34, 75, 195);
-  background: linear-gradient(0deg,
-      rgba(34, 75, 195, 0.3) 0%,
-      rgba(162, 8, 15, 0.1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 75, 195, 0.3) 0%,
+    rgba(162, 8, 15, 0.1) 100%
+  );
   color: white;
   text-align: center;
   font-family: myFirstFont;
@@ -450,7 +455,8 @@ small {
   width: 22%;
   height: 70px;
   font-size: 30px;
-  background: linear-gradient(to left, rgba(0, 0, 0, 0.1) 50%, #a2080f 50%) right;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.1) 50%, #a2080f 50%)
+    right;
   background-size: 200%;
   transition: 0.5s ease-in;
   padding-bottom: 10px;
@@ -500,7 +506,7 @@ small {
 }
 
 .round3-clue li {
-  font-family: 'Aleo', serif;
+  font-family: "Aleo", serif;
   font-size: large;
   margin-bottom: 10px;
 }
@@ -511,7 +517,7 @@ small {
 }
 
 .riddleQuestion4 p {
-  font-family: 'Aleo', serif;
+  font-family: "Aleo", serif;
   font-size: large;
 }
 
@@ -580,7 +586,7 @@ small {
 
 .riddle5 span {
   font-size: 20px;
-  font-family: 'Aleo', serif;
+  font-family: "Aleo", serif;
 }
 
 .riddle h2,
@@ -604,7 +610,6 @@ small {
 .riddle ol {
   padding-left: 50px;
 }
-
 
 .riddleQuestion1,
 .riddleQuestion2 {
