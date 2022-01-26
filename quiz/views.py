@@ -13,14 +13,14 @@ import pytz
 def home(request):
     current_user = request.user
 
-    # IST = pytz.timezone('Asia/Kolkata')
-    # targetDate = "2022-01-27 15:59:59"
-    # eventTime = datetime.fromisoformat(targetDate)
-    # eventTime = IST.localize(eventTime)
-    # curr = datetime.now(IST)
+    IST = pytz.timezone('Asia/Kolkata')
+    targetDate = "2022-01-27 15:59:59"
+    eventTime = datetime.fromisoformat(targetDate)
+    eventTime = IST.localize(eventTime)
+    curr = datetime.now(IST)
 
-    # if(curr < eventTime):
-    # return redirect("https://gdsc-treasure-hunt.netlify.app")
+    if(curr < eventTime):
+        return redirect("https://gdsc-treasure-hunt.netlify.app")
 
     # user not logged in
     if current_user.is_anonymous:
@@ -33,7 +33,16 @@ def home(request):
         user_data = UserData.objects.create(user=current_user)
         user_data.save()
 
-    return render(request, 'index.html')
+    try:
+        if(user_data.ques_solved == 0):
+            return render(request, 'index.html')
+        elif(user_data.ques_solved == 8):
+            return redirect("/leaderboard/")
+        else:
+            return render(request, 'riddleStory.html', {"num": user_data.ques_solved})
+    except Exception as e:
+        print(e)
+        return render(request, 'index.html')
 
 
 def solve(request):
@@ -54,10 +63,10 @@ def solve(request):
 
             # check answer
             try:
-                riddle = Riddle.objects.get(ques_no = data['ques_no'])
+                riddle = Riddle.objects.get(ques_no=data['ques_no'])
                 user_ans = data['answer'].strip().lower()
                 correct_ans = riddle.answer.strip().lower()
-                user_data = UserData.objects.get(user = current_user)
+                user_data = UserData.objects.get(user=current_user)
 
                 if(user_data.ques_solved + 1 != data['ques_no']):
                     print("Not matching")
@@ -125,12 +134,13 @@ def solve(request):
             hist.save()
         except Exception as e:
             print(e)
-            hist = History.objects.get(user = current_user, ques = curr_riddle)
+            hist = History.objects.get(user=current_user, ques=curr_riddle)
 
         # check is user has already taken hint
         hintTaken = False
         try:
-            hint_data = HintData.objects.get(user = current_user, ques = curr_riddle)
+            hint_data = HintData.objects.get(
+                user=current_user, ques=curr_riddle)
             if(hint_data):
                 hintTaken = True
         except Exception as e:
